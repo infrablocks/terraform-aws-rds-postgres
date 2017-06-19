@@ -33,32 +33,15 @@ RSpec.configure do |config|
   config.add_setting :public_zone_id, default: 'Z4Q2X3ESOZT4N'
   config.add_setting :private_zone_id, default: 'Z2CDAFD23Q10HO'
 
-  config.add_setting :cluster_name, default: 'test-cluster'
-  config.add_setting :cluster_instance_ssh_public_key_path, default: 'config/secrets/keys/cluster/ssh.public'
-  config.add_setting :cluster_instance_type, default: 't2.medium'
-  config.add_setting :cluster_instance_ami, default: 'ami-3fb6bc5b'
+  config.add_setting :database_instance_class, default: 'db.t2.micro'
 
-  config.add_setting :cluster_minimum_size, default: 1
-  config.add_setting :cluster_maximum_size, default: 3
-  config.add_setting :cluster_desired_capacity, default: 2
+  config.add_setting :database_name, default: 'testservicedb'
+  config.add_setting :database_master_user, default: 'testservice'
+  config.add_setting :database_master_user_password, default: 'testpassword'
+  config.add_setting :state_network_key, default: 'Z2CDAFD23Q10HO'
+  config.add_setting :state_bucket, default: 'testbucket'
 
-  config.add_setting :service_task_container_definitions, default: ""
-  config.add_setting :service_task_network_mode, default: "host"
-
-  config.add_setting :service_name, default: "service-1"
-  config.add_setting :service_image, default: "nginx"
-  config.add_setting :service_command, default: '["nginx", "-g", "daemon off;"]'
-  config.add_setting :service_port, default: 80
-  config.add_setting :service_desired_count, default: 2
-  config.add_setting :service_deployment_maximum_percent, default: 150
-  config.add_setting :service_deployment_minimum_healthy_percent, default: 25
-
-  config.add_setting :service_certificate_body, default: 'config/secrets/certificates/cert.pem'
-  config.add_setting :service_certificate_private_key, default: 'config/secrets/certificates/ssl.key'
-
-  config.add_setting :elb_internal, default: false
-  config.add_setting :elb_health_check_target, default: "HTTP:#{RSpec.configuration.service_port}/"
-  config.add_setting :elb_https_allow_cidrs, default: PublicIP.as_cidr
+  config.add_setting :infrastructure_events_bucket, default: 'tobyclemson-open-source'
 
   config.before(:suite) do
     variables = RSpec.configuration
@@ -89,31 +72,14 @@ RSpec.configure do |config|
             public_zone_id: variables.public_zone_id,
             private_zone_id: variables.private_zone_id,
 
-            cluster_name: variables.cluster_name,
-            cluster_instance_ssh_public_key_path: variables.cluster_instance_ssh_public_key_path,
-            cluster_instance_type: variables.cluster_instance_type,
+            database_instance_class: variables.database_instance_class,
+            database_name: variables.database_name,
+            database_master_user: variables.database_master_user,
+            database_master_user_password: variables.database_master_user_password,
+            state_network_key:  variables.state_network_key,
+            state_bucket: variables.state_bucket,
 
-            cluster_minimum_size: variables.cluster_minimum_size,
-            cluster_maximum_size: variables.cluster_maximum_size,
-            cluster_desired_capacity: variables.cluster_desired_capacity,
-
-            service_task_container_definitions: variables.service_task_container_definitions,
-            service_task_network_mode: variables.service_task_network_mode,
-
-            service_name: variables.service_name,
-            service_image: variables.service_image,
-            service_command: variables.service_command,
-            service_port: variables.service_port,
-            service_desired_count: variables.service_desired_count,
-            service_deployment_maximum_percent: variables.service_deployment_maximum_percent,
-            service_deployment_minimum_healthy_percent: variables.service_deployment_minimum_healthy_percent,
-
-            service_certificate_body: variables.service_certificate_body,
-            service_certificate_private_key: variables.service_certificate_private_key,
-
-            elb_internal: variables.elb_internal,
-            elb_health_check_target: variables.elb_health_check_target,
-            elb_https_allow_cidrs: variables.elb_https_allow_cidrs
+            infrastructure_events_bucket: variables.infrastructure_events_bucket
         })
   end
 
@@ -148,31 +114,14 @@ RSpec.configure do |config|
               public_zone_id: variables.public_zone_id,
               private_zone_id: variables.private_zone_id,
 
-              cluster_name: variables.cluster_name,
-              cluster_instance_ssh_public_key_path: variables.cluster_instance_ssh_public_key_path,
-              cluster_instance_type: variables.cluster_instance_type,
+              database_instance_class: variables.database_instance_class,
+              database_name: variables.database_name,
+              database_master_user: variables.database_master_user,
+              database_master_user_password: variables.database_master_user_password,
+              state_network_key:  variables.state_network_key,
+              state_bucket: variables.state_bucket,
 
-              cluster_minimum_size: variables.cluster_minimum_size,
-              cluster_maximum_size: variables.cluster_maximum_size,
-              cluster_desired_capacity: variables.cluster_desired_capacity,
-
-              service_task_container_definitions: variables.service_task_container_definitions,
-              service_task_network_mode: variables.service_task_network_mode,
-
-              service_name: variables.service_name,
-              service_image: variables.service_image,
-              service_command: variables.service_command,
-              service_port: variables.service_port,
-              service_desired_count: variables.service_desired_count,
-              service_deployment_maximum_percent: variables.service_deployment_maximum_percent,
-              service_deployment_minimum_healthy_percent: variables.service_deployment_minimum_healthy_percent,
-
-              service_certificate_body: variables.service_certificate_body,
-              service_certificate_private_key: variables.service_certificate_private_key,
-
-              elb_internal: variables.elb_internal,
-              elb_health_check_target: variables.elb_health_check_target,
-              elb_https_allow_cidrs: variables.elb_https_allow_cidrs
+              infrastructure_events_bucket: variables.infrastructure_events_bucket,
           })
 
       puts

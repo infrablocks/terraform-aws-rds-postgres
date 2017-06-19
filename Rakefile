@@ -69,29 +69,14 @@ def terraform_vars_for(opts)
       public_zone_id: 'Z2WA5EVJBZSQ3V',
       private_zone_id: 'Z2BVA9QD5NHSW6',
 
-      cluster_name: 'test-cluster',
-      cluster_node_ssh_public_key_path: 'config/secrets/keys/cluster/ssh.public',
-      cluster_node_instance_type: 't2.medium',
-      cluster_node_ami: 'ami-3fb6bc5b',
+      database_instance_class: 'db.t.micro',
 
-      cluster_minimum_size: 1,
-      cluster_maximum_size: 3,
-      cluster_desired_capacity: 2,
+      database_name: 'testservicedb',
+      database_master_user: 'testservice',
+      database_master_user_password: 'testpassword',
+      state_network_key: 'Z2CDAFD23Q10HO',
+      state_bucket: 'testbucket',
 
-      service_task_container_definitions: "",
-      service_task_network_mode: "",
-
-      service_image: "nginx",
-      service_name: "service-1",
-      service_command: '["ls", "-la"]',
-      service_port: "80",
-      service_desired_count: 2,
-
-      service_certificate_body: 'config/secrets/certificates/cert.pem',
-      service_certificate_private_key: 'config/secrets/certificates/ssl.key',
-
-      elb_internal: false,
-      elb_health_check_target: 'HTTP:80/',
-      elb_https_allow_cidrs: PublicIP.as_cidr
+      infrastructure_events_bucket: 'tobyclemson-open-source'
   }
 end

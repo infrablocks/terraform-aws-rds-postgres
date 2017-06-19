@@ -15,54 +15,11 @@ module "base_network" {
   domain_name = "${var.domain_name}"
   public_zone_id = "${var.public_zone_id}"
   private_zone_id = "${var.private_zone_id}"
+
+  infrastructure_events_bucket = "${var.infrastructure_events_bucket}"
 }
 
-module "ecs_cluster" {
-  source = "git@github.com:tobyclemson/terraform-aws-ecs-cluster.git//src"
-
-  region = "${var.region}"
-  vpc_id = "${module.base_network.vpc_id}"
-  private_subnet_ids = "${module.base_network.private_subnet_ids}"
-  private_network_cidr = "${var.private_network_cidr}"
-
-  component = "${var.component}"
-  deployment_identifier = "${var.deployment_identifier}"
-
-  cluster_name = "${var.cluster_name}"
-  cluster_instance_ssh_public_key_path = "${var.cluster_instance_ssh_public_key_path}"
-  cluster_instance_type = "${var.cluster_instance_type}"
-
-  cluster_minimum_size = "${var.cluster_minimum_size}"
-  cluster_maximum_size = "${var.cluster_maximum_size}"
-  cluster_desired_capacity = "${var.cluster_desired_capacity}"
-}
-
-module "ecs_load_balancer" {
-  source = "git@github.com:tobyclemson/terraform-aws-ecs-load-balancer.git//src"
-
-  component = "${var.component}"
-  deployment_identifier = "${var.deployment_identifier}"
-
-  region = "${var.region}"
-  vpc_id = "${module.base_network.vpc_id}"
-  public_subnet_ids = "${module.base_network.public_subnet_ids}"
-  private_subnet_ids = "${module.base_network.private_subnet_ids}"
-
-  service_name = "${var.service_name}"
-  service_port = "${var.service_port}"
-
-  service_certificate_arn = "${aws_iam_server_certificate.service.arn}"
-
-  domain_name = "${var.domain_name}"
-  public_zone_id = "${var.public_zone_id}"
-  private_zone_id = "${var.private_zone_id}"
-
-  elb_internal = "${var.elb_internal}"
-  elb_health_check_target = "${var.elb_health_check_target}"
-  elb_https_allow_cidrs = "${var.elb_https_allow_cidrs}"
-}
-
-module "ecs_service" {
+module "rds" {
   source = "../../src"
 
   component = "${var.component}"
@@ -71,21 +28,14 @@ module "ecs_service" {
   region = "${var.region}"
   vpc_id = "${module.base_network.vpc_id}"
 
-  service_task_container_definitions = "${var.service_task_container_definitions}"
-  service_task_network_mode = "${var.service_task_network_mode}"
+  private_subnet_ids = "${module.base_network.private_subnet_ids}"
 
-  service_name = "${var.service_name}"
-  service_image = "${var.service_image}"
-  service_command = "${var.service_command}"
-  service_port = "${var.service_port}"
+  database_instance_class = "${var.database_instance_class}"
 
-  service_desired_count = "${var.service_desired_count}"
-  service_deployment_maximum_percent = "${var.service_deployment_maximum_percent}"
-  service_deployment_minimum_healthy_percent = "${var.service_deployment_minimum_healthy_percent}"
-
-  service_elb_name = "${module.ecs_load_balancer.service_elb_name}"
-
-  ecs_cluster_id = "${module.ecs_cluster.cluster_id}"
-  ecs_cluster_service_role_arn = "${module.ecs_cluster.service_role_arn}"
+  database_name = "${var.database_name}"
+  state_network_key = "${var.state_network_key}"
+  database_master_user_password = "${var.database_master_user_password}"
+  state_bucket = "${var.state_bucket}"
+  database_master_user = "${var.database_master_user}"
 }
 

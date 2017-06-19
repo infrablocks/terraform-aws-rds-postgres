@@ -1,36 +1,33 @@
-variable "region" {}
-variable "vpc_id" {}
+variable "region" {
+  default = "eu-west-2"
+}
 
-variable "component" {}
-variable "deployment_identifier" {}
+variable "private_network_cidr" {
+  default = "10.0.0.0/8"
+}
 
-variable "service_task_container_definitions" {
+variable "component" {
+  default = "payment-service"
+}
+
+variable "deployment_identifier" {
+  default = "default"
+}
+
+variable "database_instance_class" {
+  default = "db.t2.micro"
+}
+
+variable "vpc_id" {
   default = ""
 }
-variable "service_task_network_mode" {
-  default = "bridge"
-}
 
-variable "service_name" {}
-variable "service_image" {
+variable "private_subnet_ids" {
   default = ""
 }
-variable "service_command" {
-  type = "list"
-  default = []
-}
-variable "service_port" {}
 
-variable "service_desired_count" {
-  default = 3
-}
-variable "service_deployment_maximum_percent" {
-  default = 200
-}
-variable "service_deployment_minimum_healthy_percent" {
-  default = 50
-}
-variable "service_elb_name" {}
-
-variable "ecs_cluster_id" {}
-variable "ecs_cluster_service_role_arn" {}
+variable "database_name" {}
+variable "database_master_user" {}
+variable "database_master_user_password" {}
+variable "state_bucket" {}
+variable "state_network_key" {}
