@@ -1,4 +1,4 @@
-module "base_network" {
+module  "base_network" {
   source = "git@github.com:tobyclemson/terraform-aws-base-networking.git//src"
 
   vpc_cidr = "${var.vpc_cidr}"
