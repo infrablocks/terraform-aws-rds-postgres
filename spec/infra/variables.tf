@@ -22,3 +22,4 @@ variable "database_master_user_password" {}
 
 variable "infrastructure_events_bucket" {}
 variable "snapshot_identifier" {}
+variable "final_snapshot_identifier" {}

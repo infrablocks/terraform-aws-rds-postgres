@@ -78,6 +78,7 @@ def terraform_vars_for(opts)
       state_bucket: 'testbucket',
 
       infrastructure_events_bucket: 'tobyclemson-open-source',
-      snapshot_identifier: 'test-snapshot-identifier'
+      snapshot_identifier: 'test-snapshot-identifier',
+      final_snapshot_identifier: 'final_snapshot_identifier'
   }
 end
