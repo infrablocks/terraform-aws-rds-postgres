@@ -24,9 +24,10 @@ module "database" {
   deployment_identifier = "${var.deployment_identifier}"
 
   region = "${var.region}"
-  vpc_id = "${coalesce(var.vpc_id,data.terraform_remote_state.network.vpc_id)}"
+  vpc_id = "${var.vpc_id}"
 
-  private_subnet_ids = "${coalesce(var.private_subnet_ids, data.terraform_remote_state.network.private_subnet_ids)}"
+  private_network_cidr = "${var.private_network_cidr}"
+  private_subnet_ids = "${var.private_subnet_ids}"
 
   database_instance_class = "${var.database_instance_class}"
 
@@ -52,19 +53,20 @@ As mentioned above, the RDS deploys into an existing base network
 | vpc_id                                     | The ID of the VPC into which to deploy the service                  | -                  | yes      |
 | component                                  | The component this service will contain                             | -                  | yes      |
 | deployment_identifier                      | An identifier for this instantiation                                | -                  | yes      |
-| private_subnet_ids                         | The IDs of the private subnets                               | -                  | yes      |
-| database_instance_class                    | The instance type of the RDS instance.                      | -                  | yes
-| database_name                              | The DB name to create. If omitted, no database is created initially.                       | -                  | yes      |
-| database_master_user_password              | Password for the master DB user.                        | -                  | yes      |
-| database_master_user |  Username for the master DB user. | see src/policies   | no       |
+| private_network_cidr                       | The CIDR of the private network allowed access to the ELB           | -                  | yes      |
+| private_subnet_ids                         | The IDs of the private subnets                                      | -                  | yes      |
+| database_instance_class                    | The instance type of the RDS instance.                              | -                  | yes      |
+| database_name                              | The DB name to create. If omitted, no database is created initially.| -                  | yes      |
+| database_master_user_password              | Password for the master DB user.                                    | -                  | yes      |
+| database_master_user                       | Username for the master DB user.                                    |-                   | yes      |
 
 
 ### Outputs
 
 | Name                      | Description                                                          |
 |---------------------------|----------------------------------------------------------------------|
-| postgres_database_port    | The ARN of the created ECS task definition                           |
-| postgres_database_host    | 
+| postgres_database_port    | The database port                           |
+| postgres_database_host    | The database host
 
 
 Development

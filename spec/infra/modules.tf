@@ -1,4 +1,4 @@
-module  "base_network" {
+module "base_network" {
   source = "git@github.com:tobyclemson/terraform-aws-base-networking.git//src"
 
   vpc_cidr = "${var.vpc_cidr}"
@@ -35,5 +35,6 @@ module "rds" {
   database_name = "${var.database_name}"
   database_master_user_password = "${var.database_master_user_password}"
   database_master_user = "${var.database_master_user}"
+  private_network_cidr = "${var.private_network_cidr}"
 }
 
