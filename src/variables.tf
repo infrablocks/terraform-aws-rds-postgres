@@ -20,4 +20,3 @@ variable "database_name" {}
 variable "database_master_user" {}
 variable "database_master_user_password" {}
 variable "snapshot_identifier" {}
-variable "final_snapshot_identifier" {}

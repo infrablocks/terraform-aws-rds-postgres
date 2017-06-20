@@ -41,7 +41,6 @@ RSpec.configure do |config|
 
   config.add_setting :infrastructure_events_bucket, default: 'tobyclemson-open-source'
   config.add_setting :snapshot_identifier, default: 'test-snapshot-identifier'
-  config.add_setting :final_snapshot_identifier, default: 'final_snapshot_identifier'
 
   config.before(:suite) do
     variables = RSpec.configuration

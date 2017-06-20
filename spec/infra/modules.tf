@@ -38,6 +38,5 @@ module "rds" {
   private_network_cidr = "${var.private_network_cidr}"
 
   snapshot_identifier = "${var.snapshot_identifier}"
-  final_snapshot_identifier = "${var.final_snapshot_identifier}"
 }
 
