@@ -19,7 +19,5 @@ variable "database_instance_class" {}
 variable "database_name" {}
 variable "database_master_user" {}
 variable "database_master_user_password" {}
-variable "state_bucket" {}
-variable "state_network_key" {}
 
 variable "infrastructure_events_bucket" {}

@@ -33,9 +33,7 @@ module "rds" {
   database_instance_class = "${var.database_instance_class}"
 
   database_name = "${var.database_name}"
-  state_network_key = "${var.state_network_key}"
   database_master_user_password = "${var.database_master_user_password}"
-  state_bucket = "${var.state_bucket}"
   database_master_user = "${var.database_master_user}"
 }
 

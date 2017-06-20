@@ -38,8 +38,6 @@ RSpec.configure do |config|
   config.add_setting :database_name, default: 'testservicedb'
   config.add_setting :database_master_user, default: 'testservice'
   config.add_setting :database_master_user_password, default: 'testpassword'
-  config.add_setting :state_network_key, default: 'Z2CDAFD23Q10HO'
-  config.add_setting :state_bucket, default: 'testbucket'
 
   config.add_setting :infrastructure_events_bucket, default: 'tobyclemson-open-source'
 
@@ -76,8 +74,6 @@ RSpec.configure do |config|
             database_name: variables.database_name,
             database_master_user: variables.database_master_user,
             database_master_user_password: variables.database_master_user_password,
-            state_network_key:  variables.state_network_key,
-            state_bucket: variables.state_bucket,
 
             infrastructure_events_bucket: variables.infrastructure_events_bucket
         })
@@ -118,8 +114,6 @@ RSpec.configure do |config|
               database_name: variables.database_name,
               database_master_user: variables.database_master_user,
               database_master_user_password: variables.database_master_user_password,
-              state_network_key:  variables.state_network_key,
-              state_bucket: variables.state_bucket,
 
               infrastructure_events_bucket: variables.infrastructure_events_bucket,
           })

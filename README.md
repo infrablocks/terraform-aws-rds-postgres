@@ -1,20 +1,14 @@
-Terraform AWS ECS Service
+Terraform AWS RDS
 =========================
 
-A Terraform module for deploying an ECS service in AWS.
+A Terraform module for deploying an RDS in AWS.
 
-The ECS service requires:
-* An existing VPC containing an ECS cluster
-* A service role ARN allowing ECS to manage load balancers
-* An ELB for the service
-* A CloudWatch log group
+The AWS RDS requires:
+* An existing VPC 
  
-The ECS service consists of:
-* An ECS task definition for the containers making up the service
-* An ECS service to maintain a number of instances of the task
-* Log collection via the provided CloudWatch log group
-
-![Diagram of infrastructure managed by this module](/docs/architecture.png?raw=true)
+The RDS consists of:
+* security groups
+* subnet groups
 
 Usage
 -----
@@ -23,44 +17,31 @@ To use the module, include something like the following in your terraform
 configuration:
 
 ```hcl-terraform
-module "ecs_cluster" {
-  source = "git@github.com:tobyclemson/terraform-aws-ecs-service.git//src"
-  
-  region = "eu-west-2"
-  vpc_id = "vpc-fb7dc365"
-  
-  component = "important-component"
-  deployment_identifier = "production"
-  
-  service_name = "web-app"
-  service_image = "images/web-app:0.3.1"
-  service_port = "8000"
-  service_command = "[\"node\", \"server.js\"]"
-  
-  service_desired_count = "3"
-  service_deployment_maximum_percent = "50"
-  service_deployment_minimum_healthy_percent = "200"
-  
-  service_elb_name = "elb-service-web-app"
-  
-  ecs_cluster_id = "arn:aws:ecs:eu-west-2:151388205202:cluster/web-app"
-  ecs_cluster_service_role_arn = "arn:aws:iam::151388205202:role/cluster-service-role-web-app"
+module "database" {
+  source = "github.com/b-social/terraform-aws-rds.git//src"
+
+  component = "${var.component}"
+  deployment_identifier = "${var.deployment_identifier}"
+
+  region = "${var.region}"
+  vpc_id = "${coalesce(var.vpc_id,data.terraform_remote_state.network.vpc_id)}"
+
+  private_subnet_ids = "${coalesce(var.private_subnet_ids, data.terraform_remote_state.network.private_subnet_ids)}"
+
+  database_instance_class = "${var.database_instance_class}"
+
+  database_name = "${var.database_name}"
+  state_network_key = "${var.state_network_key}"
+  database_master_user_password = "${var.database_master_user_password}"
+  state_bucket = "${var.state_bucket}"
+  database_master_user = "${var.database_master_user}"
 }
 ```
 
-By default, the module will use the provided region, log group, service name, 
-image, port and command to build a suitable task definition.
+By default, the module will use the provided region
 
-If further configuration of the task definition is required, provide the task
-definition content using the var `service_task_definition`. In this case, 
-`service_image` and `service_command` need not be provided.
-
-As mentioned above, the ECS service deploys into an existing base network and
-ECS cluster using an existing ELB. Whilst these can be created using any 
-mechanism you like, the following modules may be of use: 
+As mentioned above, the RDS deploys into an existing base network
 * [AWS Base Networking](https://github.com/tobyclemson/terraform-aws-base-networking)
-* [AWS ECS Cluster](https://github.com/tobyclemson/terraform-aws-ecs-cluster)
-* [AWS ECS Load Balancer](https://github.com/tobyclemson/terraform-aws-ecs-load-balancer)
 
 
 ### Inputs
@@ -71,24 +52,19 @@ mechanism you like, the following modules may be of use:
 | vpc_id                                     | The ID of the VPC into which to deploy the service                  | -                  | yes      |
 | component                                  | The component this service will contain                             | -                  | yes      |
 | deployment_identifier                      | An identifier for this instantiation                                | -                  | yes      |
-| service_name                               | The name of the service being created                               | -                  | yes      |
-| service_image                              | The docker image (including version) to deploy                      | -                  | no       |
-| service_port                               | The port the containers will be listening on                        | -                  | yes      |
-| service_command                            | The command to run to start the container                           | []                 | no       |
-| service_desired_count                      | The number of container instances to aim for                        | 3                  | yes      |
-| service_deployment_maximum_percent         | The maximum percentage of the desired count that can be running     | 200                | yes      |
-| service_deployment_minimum_healthy_percent | The minimum healthy percentage of the desired count to keep running | see src/policies   | no       |
-| service_elb_name                           | The name of the ELB to configure to point at the service instances  | -                  | yes      |
-| ecs_cluster_id                             | The ID of the ECS cluster in which to deploy the service            | -                  | yes      |
-| ecs_cluster_service_role_arn               | The ARN of the IAM role to provide to ECS to manage the service     | -                  | yes      |
+| private_subnet_ids                         | The IDs of the private subnets                               | -                  | yes      |
+| database_instance_class                    | The instance type of the RDS instance.                      | -                  | yes
+| database_name                              | The DB name to create. If omitted, no database is created initially.                       | -                  | yes      |
+| database_master_user_password              | Password for the master DB user.                        | -                  | yes      |
+| database_master_user |  Username for the master DB user. | see src/policies   | no       |
 
-TODO: Add `service_task_container_definitions` and `service_task_network_mode` above.
 
 ### Outputs
 
 | Name                      | Description                                                          |
 |---------------------------|----------------------------------------------------------------------|
-| task_definition_arn       | The ARN of the created ECS task definition                           |
+| postgres_database_port    | The ARN of the created ECS task definition                           |
+| postgres_database_host    | 
 
 
 Development

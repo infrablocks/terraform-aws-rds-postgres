@@ -7,11 +7,9 @@ variable "private_network_cidr" {
 }
 
 variable "component" {
-  default = "payment-service"
 }
 
 variable "deployment_identifier" {
-  default = "default"
 }
 
 variable "database_instance_class" {
@@ -19,15 +17,11 @@ variable "database_instance_class" {
 }
 
 variable "vpc_id" {
-  default = ""
 }
 
 variable "private_subnet_ids" {
-  default = ""
 }
 
 variable "database_name" {}
 variable "database_master_user" {}
 variable "database_master_user_password" {}
-variable "state_bucket" {}
-variable "state_network_key" {}
