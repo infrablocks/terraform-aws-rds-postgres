@@ -77,6 +77,7 @@ def terraform_vars_for(opts)
       state_network_key: 'Z2CDAFD23Q10HO',
       state_bucket: 'testbucket',
 
-      infrastructure_events_bucket: 'tobyclemson-open-source'
+      infrastructure_events_bucket: 'tobyclemson-open-source',
+      snapshot_identifier: 'test-snapshot-identifier'
   }
 end

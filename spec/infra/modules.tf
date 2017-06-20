@@ -36,5 +36,7 @@ module "rds" {
   database_master_user_password = "${var.database_master_user_password}"
   database_master_user = "${var.database_master_user}"
   private_network_cidr = "${var.private_network_cidr}"
+
+  snapshot_identifier = "${var.snapshot_identifier}"
 }
 

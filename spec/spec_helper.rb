@@ -40,6 +40,7 @@ RSpec.configure do |config|
   config.add_setting :database_master_user_password, default: 'testpassword'
 
   config.add_setting :infrastructure_events_bucket, default: 'tobyclemson-open-source'
+  config.add_setting :snapshot_identifier, default: 'test-snapshot-identifier'
 
   config.before(:suite) do
     variables = RSpec.configuration
@@ -75,7 +76,9 @@ RSpec.configure do |config|
             database_master_user: variables.database_master_user,
             database_master_user_password: variables.database_master_user_password,
 
-            infrastructure_events_bucket: variables.infrastructure_events_bucket
+            infrastructure_events_bucket: variables.infrastructure_events_bucket,
+
+            snapshot_identifier: variables.snapshot_identifier
         })
   end
 
@@ -116,6 +119,8 @@ RSpec.configure do |config|
               database_master_user_password: variables.database_master_user_password,
 
               infrastructure_events_bucket: variables.infrastructure_events_bucket,
+
+              snapshot_identifier: variables.snapshot_identifier
           })
 
       puts

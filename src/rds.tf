@@ -8,6 +8,7 @@ resource "aws_db_instance" "postgres_database" {
   name                    = "${var.database_name}"
   username                = "${var.database_master_user}"
   password                = "${var.database_master_user_password}"
+  snapshot_identifier     = "${var.snapshot_identifier}"
   publicly_accessible     = false
   multi_az                = false
   storage_encrypted       = false
