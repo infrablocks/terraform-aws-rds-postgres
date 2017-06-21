@@ -1,5 +1,5 @@
 resource "aws_db_instance" "postgres_database" {
-  identifier              = "database-instance-${var.component}-${var.deployment_identifier}"
+  identifier              = "db-instance-${var.component}-${var.deployment_identifier}"
   allocated_storage       = 10
   storage_type            = "standard"
   engine                  = "postgres"
