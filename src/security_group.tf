@@ -1,5 +1,5 @@
 resource "aws_security_group" "postgres_database_security_group" {
-  name                   = "database-security-group-${var.component}-${var.deployment_identifier}"
+  name                   = "db-security-group-${var.component}-${var.deployment_identifier}"
   description            = "Allow access to ${var.component} PostgreSQL database from private network."
   vpc_id                 = "${var.vpc_id}"
   tags {

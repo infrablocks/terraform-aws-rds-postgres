@@ -14,12 +14,12 @@ describe 'RDS' do
 
   context 'rds' do
     subject {
-      rds("db-instance-#{component}-#{deployment_identifier}")
+      rds("database-instance-#{component}-#{deployment_identifier}")
     }
 
     it { should exist }
 
-    it { should have_security_group("database-security-group-#{component}-#{deployment_identifier}") }
+    it { should have_security_group("db-security-group-#{component}-#{deployment_identifier}") }
 
     it { should have_tag('Name').value("db-instance-#{component}-#{deployment_identifier}") }
     it { should have_tag('Component').value(component) }
