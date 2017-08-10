@@ -25,3 +25,11 @@ variable "snapshot_identifier" {
 variable backup_retention_period {
   default = 7
 }
+
+variable backup_window {
+  default = "01:00-03:00"
+}
+
+variable maintenance_window {
+  default = "mon:03:01-mon:05:00"
+}

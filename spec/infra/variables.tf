@@ -23,3 +23,5 @@ variable "database_master_user_password" {}
 variable "infrastructure_events_bucket" {}
 variable "snapshot_identifier" {}
 variable "backup_retention_period" {}
+variable "backup_window" {}
+variable "maintenance_window" {}

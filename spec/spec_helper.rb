@@ -22,8 +22,7 @@ RSpec.configure do |config|
   config.add_setting :private_network_cidr, default: '10.0.0.0/8'
 
   config.add_setting :component, default: 'test'
-  config.add_setting :deployment_identifier,
-      default: deployment_identifier || SecureRandom.hex[0, 8]
+  config.add_setting :deployment_identifier, default: deployment_identifier || SecureRandom.hex[0, 8]
 
   config.add_setting :bastion_ami, default: 'ami-bb373ddf'
   config.add_setting :bastion_ssh_public_key_path, default: 'config/secrets/keys/bastion/ssh.public'
@@ -42,6 +41,8 @@ RSpec.configure do |config|
   config.add_setting :infrastructure_events_bucket, default: 'tobyclemson-open-source'
   config.add_setting :snapshot_identifier, default: ''
   config.add_setting :backup_retention_period, default: 14
+  config.add_setting :backup_window, default: '01:00-03:00'
+  config.add_setting :maintenance_window, default: 'mon:03:01-mon:05:00'
 
   config.before(:suite) do
     variables = RSpec.configuration
@@ -80,7 +81,9 @@ RSpec.configure do |config|
             infrastructure_events_bucket: variables.infrastructure_events_bucket,
 
             snapshot_identifier: variables.snapshot_identifier,
-            backup_retention_period: variables.backup_retention_period
+            backup_retention_period: variables.backup_retention_period,
+            backup_window: variables.backup_window,
+            maintenance_window: variables.maintenance_window
         })
   end
 
@@ -123,7 +126,9 @@ RSpec.configure do |config|
               infrastructure_events_bucket: variables.infrastructure_events_bucket,
 
               snapshot_identifier: variables.snapshot_identifier,
-              backup_retention_period: variables.backup_retention_period
+              backup_retention_period: variables.backup_retention_period,
+              backup_window: variables.backup_window,
+              maintenance_window: variables.maintenance_window
           })
 
       puts

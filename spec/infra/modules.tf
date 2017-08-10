@@ -39,5 +39,7 @@ module "rds" {
 
   snapshot_identifier = "${var.snapshot_identifier}"
   backup_retention_period = "${var.backup_retention_period}"
+  backup_window = "${var.backup_window}"
+  maintenance_window = "${var.maintenance_window}"
 }
 

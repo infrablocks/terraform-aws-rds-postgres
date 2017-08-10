@@ -18,6 +18,8 @@ resource "aws_db_instance" "postgres_database" {
     "${aws_security_group.postgres_database_security_group.id}"
   ]
   backup_retention_period = "${var.backup_retention_period}"
+  backup_window = "${var.backup_window}"
+  maintenance_window = "${var.maintenance_window}"
   tags {
     Name                  = "db-instance-${var.component}-${var.deployment_identifier}"
     Component             = "${var.component}"
