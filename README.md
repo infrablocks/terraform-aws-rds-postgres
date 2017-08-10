@@ -1,3 +1,4 @@
+
 Terraform AWS RDS
 =========================
 
@@ -161,6 +162,15 @@ To decrypt the resulting key:
 ```
 openssl rsa -in key.pem -out ssl.key
 ```
+
+Adding gpg-user 
+
+```
+gpg --import ~/path/xxxx.pub
+git-crypt add-gpg-user --trusted GPG-USER-ID
+
+```
+
 
 Contributing
 ------------
