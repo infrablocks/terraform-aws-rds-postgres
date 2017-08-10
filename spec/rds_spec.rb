@@ -33,6 +33,8 @@ describe 'RDS' do
     its('endpoint.address') { should eq postgres_database_host }
     its('endpoint.port') { should eq postgres_database_port.to_i }
 
+    its('backup_retention_period') { should eq 14 }
+
   end
 
 end

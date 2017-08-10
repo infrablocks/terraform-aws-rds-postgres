@@ -17,6 +17,7 @@ resource "aws_db_instance" "postgres_database" {
   vpc_security_group_ids  = [
     "${aws_security_group.postgres_database_security_group.id}"
   ]
+  backup_retention_period = "${var.backup_retention_period}"
   tags {
     Name                  = "db-instance-${var.component}-${var.deployment_identifier}"
     Component             = "${var.component}"

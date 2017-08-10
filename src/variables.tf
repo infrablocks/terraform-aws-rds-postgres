@@ -22,3 +22,6 @@ variable "database_master_user_password" {}
 variable "snapshot_identifier" {
   default = ""
 }
+variable backup_retention_period {
+  default = 7
+}
