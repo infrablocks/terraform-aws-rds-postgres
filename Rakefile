@@ -3,8 +3,8 @@ require 'securerandom'
 require 'git'
 require 'semantic'
 
-require_relative 'lib/terraform'
 require_relative 'lib/public_ip'
+require_relative 'lib/terraform'
 
 DEPLOYMENT_IDENTIFIER = SecureRandom.hex[0, 8]
 
