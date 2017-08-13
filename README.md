@@ -1,6 +1,8 @@
 
 Terraform AWS RDS
-=========================
+=================
+
+[![CircleCI](https://circleci.com/gh/infrablocks/terraform-aws-rds.svg?style=svg)](https://circleci.com/gh/infrablocks/terraform-aws-rds)
 
 A Terraform module for deploying an RDS in AWS.
 
