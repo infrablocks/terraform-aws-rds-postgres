@@ -1,8 +1,7 @@
+Terraform AWS RDS Postgres
+==========================
 
-Terraform AWS RDS
-=================
-
-[![CircleCI](https://circleci.com/gh/infrablocks/terraform-aws-rds.svg?style=svg)](https://circleci.com/gh/infrablocks/terraform-aws-rds)
+[![CircleCI](https://circleci.com/gh/infrablocks/terraform-aws-rds-postgres.svg?style=svg)](https://circleci.com/gh/infrablocks/terraform-aws-rds)
 
 A Terraform module for deploying an RDS in AWS.
 
@@ -21,7 +20,7 @@ configuration:
 
 ```hcl-terraform
 module "database" {
-  source = "github.com/b-social/terraform-aws-rds.git//src"
+  source = "github.com/infrablocks/terraform-aws-rds-postgres.git//src"
 
   component = "${var.component}"
   deployment_identifier = "${var.deployment_identifier}"
