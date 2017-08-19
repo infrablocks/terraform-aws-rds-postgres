@@ -1,5 +1,5 @@
 module "base_network" {
-  source = "git@github.com:tobyclemson/terraform-aws-base-networking.git//src"
+  source = "git@github.com:infrablocks/terraform-aws-base-networking.git//src"
 
   vpc_cidr = "${var.vpc_cidr}"
   region = "${var.region}"
@@ -19,8 +19,8 @@ module "base_network" {
   infrastructure_events_bucket = "${var.infrastructure_events_bucket}"
 }
 
-module "rds" {
-  source = "../../src"
+module "rds_postgres" {
+  source = "../../../src"
 
   component = "${var.component}"
   deployment_identifier = "${var.deployment_identifier}"

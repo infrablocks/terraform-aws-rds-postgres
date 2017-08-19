@@ -1,16 +1,14 @@
 require 'spec_helper'
 
 describe 'RDS' do
-  include_context :terraform
+  let(:component) { vars.component }
+  let(:deployment_identifier) { vars.deployment_identifier }
 
-  let(:component) { RSpec.configuration.component }
-  let(:deployment_identifier) { RSpec.configuration.deployment_identifier }
+  let(:database_name) { vars.database_name }
 
-  let(:database_name) { RSpec.configuration.database_name }
-
-  let(:vpc_id) { Terraform.output(name: 'vpc_id') }
-  let(:postgres_database_port) { Terraform.output(name: 'postgres_database_port') }
-  let(:postgres_database_host) { Terraform.output(name: 'postgres_database_host') }
+  let(:vpc_id) { output_with_name('vpc_id') }
+  let(:postgres_database_port) { output_with_name('postgres_database_port') }
+  let(:postgres_database_host) { output_with_name('postgres_database_host') }
 
   context 'rds' do
     subject {
@@ -36,7 +34,5 @@ describe 'RDS' do
     its('backup_retention_period') { should eq 14 }
     its('preferred_backup_window') { should eq '01:00-03:00' }
     its('preferred_maintenance_window') { should eq 'mon:03:01-mon:05:00' }
-
   end
-
 end
