@@ -19,17 +19,24 @@ variable "private_subnet_ids" {}
 variable "database_name" {}
 variable "database_master_user" {}
 variable "database_master_user_password" {}
+
+variable "use_multiple_availability_zones" {
+  default = "no"
+}
+variable "use_encrypted_storage" {
+  default = "no"
+}
+
 variable "snapshot_identifier" {
   default = ""
 }
-variable backup_retention_period {
+
+variable "backup_retention_period" {
   default = 7
 }
-
-variable backup_window {
+variable "backup_window" {
   default = "01:00-03:00"
 }
-
-variable maintenance_window {
+variable "maintenance_window" {
   default = "mon:03:01-mon:05:00"
 }
