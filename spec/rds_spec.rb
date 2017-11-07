@@ -27,7 +27,6 @@ describe 'RDS' do
 
     its('db_name') { should eq database_name }
 
-
     its('endpoint.address') { should eq postgres_database_host }
     its('endpoint.port') { should eq postgres_database_port.to_i }
 
