@@ -1,0 +1,25 @@
+---
+vpc_cidr: "10.1.0.0/16"
+region: 'eu-west-2'
+availability_zones: 'eu-west-2a,eu-west-2b'
+private_network_cidr: '10.0.0.0/8'
+
+component: 'test'
+deployment_identifier: '<%= @deployment_identifier %>'
+
+private_zone_id: 'Z2CDAFD23Q10HO'
+
+database_instance_class: 'db.t2.micro'
+
+database_name: 'testservicedb'
+database_master_user: 'testservice'
+database_master_user_password: 'testpassword'
+
+snapshot_identifier: ''
+
+backup_retention_period: 14
+backup_window: '01:00-03:00'
+
+maintenance_window: 'mon:03:01-mon:05:00'
+
+infrastructure_events_bucket: 'tobyclemson-open-source'
