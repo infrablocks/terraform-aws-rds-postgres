@@ -23,6 +23,11 @@ variable "database_instance_class" {
   default = "db.t2.micro"
 }
 
+variable "database_version" {
+  description = "The database version. If omitted, it lets Amazon decide."
+  default = ""
+}
+
 variable "database_name" {
   description = "The name of the database schema to create. If omitted, no database schema is created initially."
 }

@@ -26,6 +26,7 @@ describe 'RDS' do
     it {should belong_to_vpc(vpc_id)}
 
     its('db_name') {should eq database_name}
+    its('engine_version') {should eq "9.5.6"}
 
     its('endpoint.address') {should eq postgres_database_host}
     its('endpoint.port') {should eq postgres_database_port.to_i}

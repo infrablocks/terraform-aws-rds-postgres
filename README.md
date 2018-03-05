@@ -32,6 +32,7 @@ module "database" {
   deployment_identifier = "2f3eddcb"
 
   database_instance_class = "db.t2.medium"
+  database_version = "9.6.8"
 
   database_name = "identity"
   database_master_user = "admin"
