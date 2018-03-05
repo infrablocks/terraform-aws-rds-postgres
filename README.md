@@ -55,6 +55,7 @@ As mentioned above, the database deploys into an existing base network:
 | private_network_cidr            | The CIDR of the private network allowed access to the ELB                 | -                     | yes      |
 | private_subnet_ids              | The IDs of the private subnets to deploy the database into                | -                     | yes      |
 | database_instance_class         | The instance type of the RDS instance.                                    | -                     | yes      |
+| database_version                | The database version. If omitted, it lets Amazon decide.                  | -                     | no       |
 | database_name                   | The DB name to create. If omitted, no database is created initially.      | -                     | yes      |
 | database_master_user_password   | The password for the master database user.                                | -                     | yes      |
 | database_master_user            | The username for the master database user.                                | -                     | yes      |
