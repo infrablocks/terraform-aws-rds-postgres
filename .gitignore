@@ -12,7 +12,6 @@
 vendor/
 build/
 dist/
-.rakeTasks
 
 # OS
 .DS_Store
@@ -22,6 +21,7 @@ run/pids/
 run/logs/
 *.log
 .tmp
+.rakeTasks
 
 # RSpec
 .rspec_status
