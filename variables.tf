@@ -22,7 +22,10 @@ variable "database_instance_class" {
   description = "The instance type of the database instance."
   default = "db.t2.micro"
 }
-
+variable "allocated_storage" {
+  description = "The allocated storage in GBs."
+  default = 10
+}
 variable "database_version" {
   description = "The database version. If omitted, it lets Amazon decide."
   default = ""
