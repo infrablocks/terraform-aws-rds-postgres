@@ -12,9 +12,9 @@ module "rds_postgres" {
   component = "${var.component}"
   deployment_identifier = "${var.deployment_identifier}"
   region = "${var.region}"
-  vpc_id = "${data.terraform_remote_state.prerequisites.vpc_id}"
+  vpc_id = "${data.terraform_remote_state.prerequisites.outputs.vpc_id}"
 
-  private_subnet_ids = "${data.terraform_remote_state.prerequisites.private_subnet_ids}"
+  private_subnet_ids = "${data.terraform_remote_state.prerequisites.outputs.private_subnet_ids}"
 
   database_instance_class = "${var.database_instance_class}"
   database_version = "9.5.6"
