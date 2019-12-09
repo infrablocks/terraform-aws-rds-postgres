@@ -1,6 +1,3 @@
-variable "region" {
-  description = "The region into which to deploy the database."
-}
 variable "vpc_id" {
   description = "The ID of the VPC into which to deploy the database."
 }
