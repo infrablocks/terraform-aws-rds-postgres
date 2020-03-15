@@ -15,7 +15,7 @@ database_name: 'testservicedb'
 database_master_user: 'testservice'
 database_master_user_password: 'testpassword'
 
-snapshot_identifier: '""'
+snapshot_identifier: ''
 
 backup_retention_period: 14
 backup_window: '01:00-03:00'
