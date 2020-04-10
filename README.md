@@ -69,11 +69,12 @@ As mentioned above, the database deploys into an existing base network:
 
 ### Outputs
 
-| Name                   | Description       |
-|------------------------|-------------------|
-| postgres_database_port | The database port |
-| postgres_database_host | The database host |
-| postgres_database_name | The database name |
+| Name                    | Description                    |
+|-------------------------|--------------------------------|
+| postgres_database_port  | The database port              |
+| postgres_database_host  | The database host              |
+| postgres_database_name  | The database name              |
+| postgres_database_sg_id | The database security group id |
 
 
 Development

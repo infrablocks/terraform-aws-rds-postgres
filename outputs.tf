@@ -12,3 +12,8 @@ output "postgres_database_port" {
   description = "The database port."
   value       = "5432"
 }
+
+output "postgres_database_sg_id" {
+  decription = "Security Group id associated with database server"
+  value      = aws_security_group.postgres_database_security_group.id
+}
