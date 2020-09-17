@@ -7,6 +7,8 @@ deployment_identifier: "%{hiera('deployment_identifier')}"
 work_directory: 'build'
 configuration_directory: "%{hiera('work_directory')}/%{hiera('source_directory')}"
 
+ingress_self: "no"
+egress_self: "no"
 private_network_cidr: '10.0.0.0/8'
 
 database_instance_class: 'db.t2.micro'

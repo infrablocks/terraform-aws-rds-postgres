@@ -34,5 +34,9 @@ describe 'RDS' do
     its('backup_retention_period') {should eq 14}
     its('preferred_backup_window') {should eq '01:00-03:00'}
     its('preferred_maintenance_window') {should eq 'mon:03:01-mon:05:00'}
+
+    its('egress.cidr_blocks') {should eq ['0.0.0.0/0']}
+    its('ingress_self') {should eq 'no'}
+    its('egress_self') {should eq 'no'}
   end
 end
