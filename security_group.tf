@@ -13,17 +13,25 @@ resource "aws_security_group" "postgres_database_security_group" {
     from_port = 5432
     to_port   = 5432
     protocol  = "tcp"
-    self      = var.ingress_self == "yes" ? true : false
     cidr_blocks = [
       var.private_network_cidr
     ]
+  }
+
+  dynamic "ingress" {
+    for_each = var.ingress_self == "yes" ? [1] : []
+    content {
+      self      = true
+      from_port = 0
+      to_port   = 65535
+      protocol  = "tcp"
+    }
   }
 
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    self        = var.egress_self == "yes" ? true : false
     cidr_blocks = ["0.0.0.0/0"]
   }
 }

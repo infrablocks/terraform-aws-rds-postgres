@@ -12,10 +12,6 @@ variable "ingress_self" {
   description = "If yes, the security group itself will be added as a source to this ingress rule."
   default = "no"
 }
-variable "egress_self" {
-  description = "If yes, the security group itself will be added as a source to this egress rule."
-  default = "no"
-}
 
 variable "component" {
   description = "The component this database will serve."

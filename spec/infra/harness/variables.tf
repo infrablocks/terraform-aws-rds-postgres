@@ -1,7 +1,6 @@
 variable "region" {}
 variable "private_network_cidr" {}
 variable "ingress_self" {}
-variable "egress_self" {}
 
 variable "component" {}
 variable "deployment_identifier" {}

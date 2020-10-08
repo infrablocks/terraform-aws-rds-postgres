@@ -5,6 +5,7 @@ vars:
   region: "%{hiera('region')}"
 
   private_network_cidr: "%{hiera('private_network_cidr')}"
+  ingress_self: "%{hiera('ingress_self')}"
 
   component: "%{hiera('component')}"
   deployment_identifier: "%{hiera('deployment_identifier')}"
