@@ -53,6 +53,7 @@ As mentioned above, the database deploys into an existing base network:
 | component                       | The component this database will serve                                    | -                     | yes      |
 | deployment_identifier           | An identifier for this instantiation                                      | -                     | yes      |
 | private_network_cidr            | The CIDR of the private network allowed access to the ELB                 | -                     | yes      |
+| ingress_self                    | Whether to create a self-referencing ingress rule on the security group   | "no"                  | no       |
 | private_subnet_ids              | The IDs of the private subnets to deploy the database into                | -                     | yes      |
 | database_instance_class         | The instance type of the RDS instance.                                    | -                     | yes      |
 | database_version                | The database version. If omitted, it lets Amazon decide.                  | -                     | no       |
