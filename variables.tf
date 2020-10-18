@@ -8,6 +8,10 @@ variable "private_subnet_ids" {
 variable "private_network_cidr" {
   description = "The CIDR of the private network allowed access to the database."
 }
+variable "ingress_self" {
+  description = "If yes, the security group itself will be added as a source to this ingress rule."
+  default = "no"
+}
 
 variable "component" {
   description = "The component this database will serve."

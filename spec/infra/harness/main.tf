@@ -22,6 +22,7 @@ module "rds_postgres" {
   database_master_user_password = var.database_master_user_password
   database_master_user = var.database_master_user
   private_network_cidr = var.private_network_cidr
+  ingress_self = var.ingress_self
 
   snapshot_identifier = var.snapshot_identifier
   backup_retention_period = var.backup_retention_period

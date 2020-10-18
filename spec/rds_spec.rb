@@ -35,4 +35,11 @@ describe 'RDS' do
     its('preferred_backup_window') {should eq '01:00-03:00'}
     its('preferred_maintenance_window') {should eq 'mon:03:01-mon:05:00'}
   end
+
+  context 'security_group' do
+    subject {
+      security_group("database-security-group-#{component}-#{deployment_identifier}")
+    }
+    its(:inbound) { should be_opened(22).protocol('tcp').for("database-security-group-#{component}-#{deployment_identifier}") }
+  end
 end
