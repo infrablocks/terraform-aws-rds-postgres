@@ -1,6 +1,5 @@
 variable "region" {}
 variable "private_network_cidr" {}
-variable "ingress_self" {}
 
 variable "component" {}
 variable "deployment_identifier" {}
@@ -15,3 +14,5 @@ variable "snapshot_identifier" {}
 variable "backup_retention_period" {}
 variable "backup_window" {}
 variable "maintenance_window" {}
+
+variable "include_self_ingress_rule" {}

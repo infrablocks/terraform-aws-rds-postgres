@@ -5,7 +5,6 @@ vars:
   region: "%{hiera('region')}"
 
   private_network_cidr: "%{hiera('private_network_cidr')}"
-  ingress_self: "%{hiera('ingress_self')}"
 
   component: "%{hiera('component')}"
   deployment_identifier: "%{hiera('deployment_identifier')}"
@@ -22,3 +21,5 @@ vars:
   backup_window: "%{hiera('backup_window')}"
 
   maintenance_window: "%{hiera('maintenance_window')}"
+
+  include_self_ingress_rule: "%{hiera('include_self_ingress_rule')}"
