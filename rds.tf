@@ -14,6 +14,7 @@ resource "aws_db_instance" "postgres_database" {
   storage_encrypted    = var.use_encrypted_storage == "yes" ? true : false
   skip_final_snapshot  = true
   db_subnet_group_name = aws_db_subnet_group.postgres_database_subnet_group.name
+  allow_major_version_upgrade = var.allow_major_version_upgrade == "yes" ? true : false
 
   vpc_security_group_ids = [
     aws_security_group.postgres_database_security_group.id
