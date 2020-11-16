@@ -16,3 +16,5 @@ variable "backup_window" {}
 variable "maintenance_window" {}
 
 variable "include_self_ingress_rule" {}
+
+variable "allow_major_version_upgrade" {}
