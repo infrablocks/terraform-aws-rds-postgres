@@ -38,8 +38,6 @@ describe 'RDS' do
     its('db_name') { should(eq(database_name)) }
     its('engine_version') { should(eq("9.5.6")) }
 
-    its('allow_major_version_upgrade') { should(eq(true)) }
-
     its('endpoint.address') { should(eq(postgres_database_host)) }
     its('endpoint.port') { should(eq(postgres_database_port.to_i)) }
 
