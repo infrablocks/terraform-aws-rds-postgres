@@ -70,3 +70,8 @@ variable "include_self_ingress_rule" {
   description = "Whether or not to allow access from the database security group to itself (\"yes\" or \"no\")."
   default     = "no"
 }
+
+variable "allow_major_version_upgrade" {
+  description = "hether or not to allow major version upgrades"
+  default = "no"
+}

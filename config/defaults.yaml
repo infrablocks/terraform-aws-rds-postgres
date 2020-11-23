@@ -30,3 +30,4 @@ availability_zones:
 private_zone_id: 'Z2CDAFD23Q10HO'
 
 include_self_ingress_rule: "yes"
+allow_major_version_upgrade: "yes"
