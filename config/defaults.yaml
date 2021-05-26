@@ -9,7 +9,7 @@ configuration_directory: "%{hiera('work_directory')}/%{hiera('source_directory')
 
 private_network_cidr: '10.0.0.0/8'
 
-database_instance_class: 'db.t2.micro'
+database_instance_class: 'db.t3.micro'
 
 database_name: 'testservicedb'
 database_master_user: 'testservice'
