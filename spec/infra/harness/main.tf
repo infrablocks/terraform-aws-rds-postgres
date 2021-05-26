@@ -31,5 +31,6 @@ module "rds_postgres" {
   maintenance_window = var.maintenance_window
 
   include_self_ingress_rule = var.include_self_ingress_rule
+  allow_major_version_upgrade = var.allow_major_version_upgrade
 }
 

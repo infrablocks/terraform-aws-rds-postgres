@@ -66,6 +66,7 @@ As mentioned above, the database deploys into an existing base network:
 | backup_window                   | The time window in which backups should take place.                         | "01:00-03:00"         | yes      |
 | maintenance_window              | The time window in which maintenance should take place.                     | "mon:03:01-mon:05:00" | yes      |
 | include_self_ingress_rule       | Whether or not to add a self-referencing ingress rule on the security group | "no"                  | no       |
+| allow_major_version_upgrade     | Whether or not to allow major version upgrades                              | "no"                  | no       |
 
 
 ### Outputs
