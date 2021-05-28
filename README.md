@@ -43,6 +43,9 @@ module "database" {
 As mentioned above, the database deploys into an existing base network:
 * [AWS Base Networking](https://github.com/tobyclemson/terraform-aws-base-networking)
 
+See the 
+[Terraform registry entry](https://registry.terraform.io/modules/infrablocks/rds-postgres/aws/latest) 
+for more details.
 
 ### Inputs
 
@@ -78,6 +81,10 @@ As mentioned above, the database deploys into an existing base network:
 | postgres_database_name  | The database name              |
 | postgres_database_sg_id | The database security group id |
 
+### Compatibility
+
+This module is compatible with Terraform versions greater than or equal to 
+Terraform 0.14.
 
 Development
 -----------
