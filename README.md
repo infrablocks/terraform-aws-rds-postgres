@@ -41,7 +41,7 @@ module "database" {
 ```
 
 As mentioned above, the database deploys into an existing base network:
-* [AWS Base Networking](https://github.com/tobyclemson/terraform-aws-base-networking)
+* [AWS Base Networking](https://github.com/infrablocks/terraform-aws-base-networking)
 
 See the 
 [Terraform registry entry](https://registry.terraform.io/modules/infrablocks/rds-postgres/aws/latest) 
@@ -91,8 +91,8 @@ Development
 
 ### Machine Requirements
 
-In order for the build to run correctly, a few tools will need to be installed on your
-development machine:
+In order for the build to run correctly, a few tools will need to be installed 
+on your development machine:
 
 * Ruby (2.3.1)
 * Bundler
@@ -141,8 +141,8 @@ direnv allow <repository-directory>
 
 ### Running the build
 
-To provision module infrastructure, run tests and then destroy that infrastructure,
-execute:
+To provision module infrastructure, run tests and then destroy that 
+infrastructure, execute:
 
 ```bash
 ./go
