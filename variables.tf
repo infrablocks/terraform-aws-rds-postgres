@@ -72,12 +72,12 @@ variable "include_self_ingress_rule" {
 }
 
 variable "allow_major_version_upgrade" {
-  description = "Whether or not to allow major version upgrades"
+  description = "Whether or not to allow major version upgrades (\"yes\" or \"no\")."
   default = "no"
 }
 
 variable "auto_minor_version_upgrade" {
-  description = "Whether or not to enable auto minor version upgrades"
+  description = "Whether or not to enable auto minor version upgrades (\"yes\" or \"no\")."
   default = "yes"
 }
 

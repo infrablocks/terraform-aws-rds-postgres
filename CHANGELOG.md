@@ -1,3 +1,12 @@
+## 2.1.0 (June 6th, 2021)
+
+IMPROVEMENTS:
+
+* The storage type for the database can now be specified via the `storage_type`
+  var as one of `"standard"` or `"gp2"`.
+* Automatic minor version upgrades can now be disabled by passing `"no"` for
+  the `auto_minor_version_upgrade` var.
+
 ## 2.0.0 (May 28th, 2021)
 
 BACKWARDS INCOMPATIBILITIES / NOTES:
