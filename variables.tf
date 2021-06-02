@@ -78,11 +78,11 @@ variable "allow_major_version_upgrade" {
 
 variable "auto_minor_version_upgrade" {
   description = "Whether or not to enable auto minor version upgrades"
-  default = "no"
+  default = "yes"
 }
 
 variable "storage_type" {
-  description = " (Optional) One of standard(magnetic), gp2(general purpose SSD)."
+  description = "The type of storage to use, either \"standard\" (magnetic) or \"gp2\" (general purpose SSD)."
   default = "standard"
 
   validation {
