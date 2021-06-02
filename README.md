@@ -67,6 +67,8 @@ As mentioned above, the database deploys into an existing base network:
 | maintenance_window              | The time window in which maintenance should take place.                     | "mon:03:01-mon:05:00" | yes      |
 | include_self_ingress_rule       | Whether or not to add a self-referencing ingress rule on the security group | "no"                  | no       |
 | allow_major_version_upgrade     | Whether or not to allow major version upgrades                              | "no"                  | no       |
+| auto_minor_version_upgrade      | Whether or not to enable auto minor version upgrades                        | "no"                  | no       |
+| storage_type                    | The storage type of the RDS instance ("standard" or "gp2" )                 | "standard"            | no       |
 
 
 ### Outputs

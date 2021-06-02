@@ -5,6 +5,7 @@ describe 'RDS' do
   let(:deployment_identifier) { vars.deployment_identifier }
 
   let(:database_name) { vars.database_name }
+  let(:storage_type) { vars.storage_type }
 
   let(:vpc_id) { output_for(:prerequisites, 'vpc_id') }
   let(:postgres_database_port) do
@@ -46,6 +47,7 @@ describe 'RDS' do
     its('preferred_maintenance_window') do
       should(eq('mon:03:01-mon:05:00'))
     end
+    its('storage_type') { should(eq(storage_type)) }
   end
 
   context 'security_group' do

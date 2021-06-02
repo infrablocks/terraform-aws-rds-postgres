@@ -72,6 +72,21 @@ variable "include_self_ingress_rule" {
 }
 
 variable "allow_major_version_upgrade" {
-  description = "hether or not to allow major version upgrades"
+  description = "Whether or not to allow major version upgrades"
   default = "no"
+}
+
+variable "auto_minor_version_upgrade" {
+  description = "Whether or not to enable auto minor version upgrades"
+  default = "no"
+}
+
+variable "storage_type" {
+  description = " (Optional) One of standard(magnetic), gp2(general purpose SSD)."
+  default = "standard"
+
+  validation {
+    condition     = contains(["standard", "gp2"], var.storage_type)
+    error_message = "Must be one of standard or gp2. Provisioned IOPS (io1) not yet supported."
+  }
 }

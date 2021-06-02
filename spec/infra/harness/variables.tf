@@ -18,3 +18,5 @@ variable "maintenance_window" {}
 variable "include_self_ingress_rule" {}
 
 variable "allow_major_version_upgrade" {}
+variable "auto_minor_version_upgrade" {}
+variable "storage_type" {}

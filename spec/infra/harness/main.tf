@@ -32,5 +32,7 @@ module "rds_postgres" {
 
   include_self_ingress_rule = var.include_self_ingress_rule
   allow_major_version_upgrade = var.allow_major_version_upgrade
+  auto_minor_version_upgrade = var.auto_minor_version_upgrade
+  storage_type = var.storage_type
 }
 

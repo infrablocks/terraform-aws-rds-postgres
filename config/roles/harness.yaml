@@ -24,3 +24,5 @@ vars:
 
   include_self_ingress_rule: "%{hiera('include_self_ingress_rule')}"
   allow_major_version_upgrade: "%{hiera('allow_major_version_upgrade')}"
+  auto_minor_version_upgrade: "%{hiera('auto_minor_version_upgrade')}"
+  storage_type: "%{hiera('storage_type')}"
