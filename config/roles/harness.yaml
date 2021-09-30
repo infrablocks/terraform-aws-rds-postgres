@@ -26,3 +26,4 @@ vars:
   allow_major_version_upgrade: "%{hiera('allow_major_version_upgrade')}"
   auto_minor_version_upgrade: "%{hiera('auto_minor_version_upgrade')}"
   storage_type: "%{hiera('storage_type')}"
+  performance_insights_enabled: "%{hiera('performance_insights_enabled')}"

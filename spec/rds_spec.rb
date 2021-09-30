@@ -48,6 +48,7 @@ describe 'RDS' do
       should(eq('mon:03:01-mon:05:00'))
     end
     its('storage_type') { should(eq(storage_type)) }
+    its('performance_insights_enabled') { should(eq(true)) }
   end
 
   context 'security_group' do

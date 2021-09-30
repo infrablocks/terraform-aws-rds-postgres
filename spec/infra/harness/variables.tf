@@ -20,3 +20,5 @@ variable "include_self_ingress_rule" {}
 variable "allow_major_version_upgrade" {}
 variable "auto_minor_version_upgrade" {}
 variable "storage_type" {}
+
+variable "performance_insights_enabled" {}

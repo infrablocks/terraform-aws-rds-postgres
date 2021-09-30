@@ -34,5 +34,6 @@ module "rds_postgres" {
   allow_major_version_upgrade = var.allow_major_version_upgrade
   auto_minor_version_upgrade = var.auto_minor_version_upgrade
   storage_type = var.storage_type
+  performance_insights_enabled = var.performance_insights_enabled
 }
 
