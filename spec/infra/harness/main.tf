@@ -19,7 +19,7 @@ module "rds_postgres" {
   private_network_cidr = var.private_network_cidr
 
   database_instance_class = var.database_instance_class
-  database_version = "13.2"
+  database_version = "14"
 
   database_name = var.database_name
   database_master_user_password = var.database_master_user_password
