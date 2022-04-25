@@ -1,3 +1,6 @@
+## 2.2.0 (April 25th, 2022)
+* Performance insights can be enabled by setting `performance_insights_enabled` to `"yes"`.
+
 ## 2.1.0 (June 6th, 2021)
 
 IMPROVEMENTS:
