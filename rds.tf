@@ -16,6 +16,7 @@ resource "aws_db_instance" "postgres_database" {
   db_subnet_group_name = aws_db_subnet_group.postgres_database_subnet_group.name
   allow_major_version_upgrade = var.allow_major_version_upgrade == "yes" ? true : false
   auto_minor_version_upgrade = var.auto_minor_version_upgrade == "yes" ? true : false
+  performance_insights_enabled = var.performance_insights_enabled == "yes" ? true : false
 
   vpc_security_group_ids = [
     aws_security_group.postgres_database_security_group.id

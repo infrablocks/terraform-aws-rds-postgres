@@ -90,3 +90,8 @@ variable "storage_type" {
     error_message = "Must be one of standard or gp2. Provisioned IOPS (io1) not yet supported."
   }
 }
+
+variable "performance_insights_enabled" {
+  description = "Specifies whether Performance Insights are enabled. Defaults to false."
+  default = "no"
+}
