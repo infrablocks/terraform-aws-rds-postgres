@@ -71,7 +71,8 @@ for more details.
 | include_self_ingress_rule       | Whether or not to add a self-referencing ingress rule on the security group | "no"                  | no       |
 | allow_major_version_upgrade     | Whether or not to allow major version upgrades                              | "no"                  | no       |
 | auto_minor_version_upgrade      | Whether or not to enable auto minor version upgrades                        | "yes"                 | no       |
-| storage_type                    | The storage type of the RDS instance ("standard" or "gp2" )                 | "standard"            | no       |
+| storage_type                    | The storage type of the RDS instance ("standard" or "gp2")                  | "standard"            | no       |
+| performance_insights_enabled    | Whether or not performance insights are enabled                             | "no"                  | no       |
 
 
 ### Outputs
