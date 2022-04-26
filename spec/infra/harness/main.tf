@@ -35,5 +35,7 @@ module "rds_postgres" {
   auto_minor_version_upgrade = var.auto_minor_version_upgrade
   storage_type = var.storage_type
   performance_insights_enabled = var.performance_insights_enabled
+
+  max_allocated_storage = var.max_allocated_storage
 }
 

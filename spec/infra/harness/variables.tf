@@ -22,3 +22,5 @@ variable "auto_minor_version_upgrade" {}
 variable "storage_type" {}
 
 variable "performance_insights_enabled" {}
+
+variable "max_allocated_storage" {}

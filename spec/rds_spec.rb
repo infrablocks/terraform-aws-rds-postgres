@@ -6,6 +6,7 @@ describe 'RDS' do
 
   let(:database_name) { vars.database_name }
   let(:storage_type) { vars.storage_type }
+  let(:storage_type) { vars.max_allocated_storage }
 
   let(:vpc_id) { output_for(:prerequisites, 'vpc_id') }
   let(:postgres_database_port) do
@@ -49,6 +50,8 @@ describe 'RDS' do
     end
     its('storage_type') { should(eq(storage_type)) }
     its('performance_insights_enabled') { should(eq(true)) }
+
+    its('max_allocated_storage') { should(eq(max_allocated_storage)) }
   end
 
   context 'security_group' do
