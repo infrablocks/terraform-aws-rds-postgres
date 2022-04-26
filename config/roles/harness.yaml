@@ -27,3 +27,5 @@ vars:
   auto_minor_version_upgrade: "%{hiera('auto_minor_version_upgrade')}"
   storage_type: "%{hiera('storage_type')}"
   performance_insights_enabled: "%{hiera('performance_insights_enabled')}"
+
+  max_allocated_storage: "%{hiera('max_allocated_storage')}"
