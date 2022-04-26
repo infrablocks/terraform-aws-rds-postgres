@@ -25,7 +25,7 @@ variable "allocated_storage" {
   default     = 10
 }
 variable "max_allocated_storage" {
-  description = "When configured, the upper limit to which Amazon RDS can automatically scale the storage of the DB instance. See the terraform documentation for more information,"
+  description = "When configured, the upper limit to which Amazon RDS can automatically scale the storage of the DB instance. See the terraform documentation for more information."
   default     = 0
 }
 variable "database_version" {
