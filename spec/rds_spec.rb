@@ -6,7 +6,7 @@ describe 'RDS' do
 
   let(:database_name) { vars.database_name }
   let(:storage_type) { vars.storage_type }
-  let(:max_allocated_storage) { vars.max_allocated_storage }
+  let(:max_allocated_storage) { vars.max_allocated_storage.to_i }
 
   let(:vpc_id) { output_for(:prerequisites, 'vpc_id') }
   let(:postgres_database_port) do
