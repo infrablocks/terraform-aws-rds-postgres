@@ -47,7 +47,9 @@ describe 'subnet group' do
     it 'uses the provided subnet IDs' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_db_subnet_group')
-              .with_attribute_value(:subnet_ids, subnet_ids))
+              .with_attribute_value(
+                :subnet_ids, containing_exactly(*subnet_ids)
+              ))
     end
 
     it 'includes component and deployment identifier tags' do
