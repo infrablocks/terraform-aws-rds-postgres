@@ -1,0 +1,14 @@
+---
+configuration_directory: "%{cwd}/spec/unit/infra/root"
+state_file: "%{cwd}/state/root.tfstate"
+vars:
+  region: "%{hiera('region')}"
+
+  private_network_cidr: "%{hiera('private_network_cidr')}"
+
+  component: "%{hiera('component')}"
+  deployment_identifier: "%{hiera('deployment_identifier')}"
+
+  database_name: "%{hiera('database_name')}"
+  database_master_user: "%{hiera('database_master_user')}"
+  database_master_user_password: "%{hiera('database_master_user_password')}"

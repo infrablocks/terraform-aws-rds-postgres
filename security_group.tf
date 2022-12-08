@@ -1,6 +1,6 @@
 resource "aws_security_group" "postgres_database_security_group" {
   name        = "database-security-group-${var.component}-${var.deployment_identifier}"
-  description = "Allow access to ${var.component} PostgreSQL database from private network."
+  description = "Default security group for ${var.component} PostgreSQL database instance with deployment identifier ${var.deployment_identifier} allowing access from private network."
   vpc_id      = var.vpc_id
 
   tags = {
@@ -10,9 +10,9 @@ resource "aws_security_group" "postgres_database_security_group" {
   }
 
   ingress {
-    from_port   = 5432
-    to_port     = 5432
-    protocol    = "tcp"
+    from_port = local.database_port
+    to_port   = local.database_port
+    protocol  = "tcp"
     cidr_blocks = [
       var.private_network_cidr
     ]

@@ -2,37 +2,17 @@
 region: 'eu-west-2'
 
 component: 'test'
-deployment_identifier: "%{hiera('deployment_identifier')}"
-
-work_directory: 'build'
-configuration_directory: "%{hiera('work_directory')}/%{hiera('source_directory')}"
-
-private_network_cidr: '10.0.0.0/8'
-
-database_instance_class: 'db.t3.micro'
-
-database_name: 'testservicedb'
-database_master_user: 'testservice'
-database_master_user_password: 'testpassword'
-
-snapshot_identifier: ''
-
-backup_retention_period: 14
-backup_window: '01:00-03:00'
-
-maintenance_window: 'mon:03:01-mon:05:00'
+deployment_identifier: "%{hiera('seed')}"
 
 vpc_cidr: "10.1.0.0/16"
 availability_zones:
   - "eu-west-2a"
   - "eu-west-2b"
 
-private_zone_id: 'Z2CDAFD23Q10HO'
+private_network_cidr: '10.0.0.0/8'
 
-include_self_ingress_rule: "yes"
-allow_major_version_upgrade: "yes"
-auto_minor_version_upgrade: "yes"
-storage_type: "gp2"
-performance_insights_enabled: "yes"
+database_name: 'testservicedb'
+database_master_user: 'testservice'
+database_master_user_password: 'testpassword'
 
-max_allocated_storage: 30
+private_zone_id: 'Z0211739BXR21FNN139O'

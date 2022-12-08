@@ -10,4 +10,6 @@ module "base_network" {
   deployment_identifier = var.deployment_identifier
 
   private_zone_id = var.private_zone_id
+
+  include_nat_gateways = "no"
 }
