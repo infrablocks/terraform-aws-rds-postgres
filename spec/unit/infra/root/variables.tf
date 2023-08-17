@@ -47,7 +47,9 @@ variable "backup_window" {
 variable "maintenance_window" {
   default = null
 }
-
+variable "parameter_group_name" {
+  default = null
+}
 variable "use_multiple_availability_zones" {
   default = null
 }
