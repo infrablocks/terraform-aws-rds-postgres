@@ -5,7 +5,7 @@ output "postgres_database_host" {
 
 output "postgres_database_name" {
   description = "The database name."
-  value = aws_db_instance.postgres_database.name
+  value = aws_db_instance.postgres_database.db_name
 }
 
 output "postgres_database_port" {
