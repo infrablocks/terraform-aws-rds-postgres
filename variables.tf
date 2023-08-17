@@ -108,3 +108,7 @@ variable "maintenance_window" {
   description = "The time window in which maintenance should take place."
   default     = "mon:03:01-mon:05:00"
 }
+variable "parameter_group_name" {
+  description = "Name of the DB parameter group to associate or create."
+  default     = null
+}

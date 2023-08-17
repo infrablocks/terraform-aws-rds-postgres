@@ -23,7 +23,7 @@ resource "aws_db_instance" "postgres_database" {
   allocated_storage     = local.allocated_storage
   max_allocated_storage = var.max_allocated_storage
 
-  name     = var.database_name
+  db_name  = var.database_name
   username = var.database_master_user
   password = var.database_master_user_password
 
@@ -37,6 +37,7 @@ resource "aws_db_instance" "postgres_database" {
   backup_retention_period = local.backup_retention_period
   backup_window           = local.backup_window
   maintenance_window      = local.maintenance_window
+  parameter_group_name    = var.parameter_group_name
 
   tags = {
     Name                 = "db-instance-${var.component}-${var.deployment_identifier}"

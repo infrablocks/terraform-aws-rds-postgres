@@ -104,7 +104,7 @@ describe 'RDS' do
     it 'uses the provided database name' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_db_instance')
-              .with_attribute_value(:name, database_name))
+              .with_attribute_value(:db_name, database_name))
     end
 
     it 'uses the provided database username' do
@@ -150,6 +150,12 @@ describe 'RDS' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_db_instance')
               .with_attribute_value(:maintenance_window, 'mon:03:01-mon:05:00'))
+    end
+
+    it 'does not set parameter_group_name' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(:parameter_group_name, a_nil_value))
     end
 
     it 'allows automatic minor version upgrades' do
@@ -364,6 +370,21 @@ describe 'RDS' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_db_instance')
               .with_attribute_value(:maintenance_window, 'tue:02:01-tue:04:00'))
+    end
+  end
+
+  describe 'when parameter_group_name provided' do
+    before(:context) do
+      @plan = plan(role: :root) do |vars|
+        vars.parameter_group_name = 'test-parameter-group'
+      end
+    end
+
+    it 'uses the provided value for the assigned parameter group' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(:parameter_group_name,
+                                    'test-parameter-group'))
     end
   end
 
