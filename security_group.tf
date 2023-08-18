@@ -36,4 +36,8 @@ resource "aws_security_group" "postgres_database_security_group" {
       "0.0.0.0/0"
     ]
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
