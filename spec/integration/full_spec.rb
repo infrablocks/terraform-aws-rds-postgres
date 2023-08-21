@@ -44,7 +44,8 @@ describe 'full' do
     it { is_expected.to(exist) }
 
     it 'has a security group' do
-      security_group_name_tag = "sg-database-#{component}-#{deployment_identifier}"
+      security_group_name_tag =
+        "sg-database-#{component}-#{deployment_identifier}"
       expect(database)
         .to(have_security_group(security_group_name_tag))
     end
