@@ -27,11 +27,11 @@ describe 'security group' do
               .once)
     end
 
-    it 'includes the component and deployment identifier in the name' do
+    it 'includes the component and deployment identifier in the name_prefix' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_security_group')
               .with_attribute_value(
-                :name,
+                :name_prefix,
                 including(component)
                   .and(including(deployment_identifier))
               ))

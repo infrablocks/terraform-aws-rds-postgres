@@ -44,10 +44,9 @@ describe 'full' do
     it { is_expected.to(exist) }
 
     it 'has a security group' do
-      security_group_name =
-        "database-security-group-#{component}-#{deployment_identifier}"
+      security_group_name_tag = "sg-database-#{component}-#{deployment_identifier}"
       expect(database)
-        .to(have_security_group(security_group_name))
+        .to(have_security_group(security_group_name_tag))
     end
 
     it 'has a name tag' do
@@ -95,7 +94,7 @@ describe 'full' do
   describe 'security_group' do
     subject do
       security_group(
-        "database-security-group-#{component}-#{deployment_identifier}"
+        "sg-database-#{component}-#{deployment_identifier}"
       )
     end
 
@@ -104,7 +103,7 @@ describe 'full' do
         .to(be_opened(22)
               .protocol('tcp')
               .for(
-                "database-security-group-#{component}-#{deployment_identifier}"
+                "sg-database-#{component}-#{deployment_identifier}"
               ))
     end
   end
