@@ -217,6 +217,18 @@ describe 'RDS' do
         .to(include_output_creation(name: 'module_outputs')
               .with_value(including(:postgres_database_port)))
     end
+
+    it 'outputs the security group id' do
+      expect(@plan)
+        .to(include_output_creation(name: 'module_outputs')
+              .with_value(including(:postgres_database_sg_id)))
+    end
+
+    it 'outputs the security group name' do
+      expect(@plan)
+        .to(include_output_creation(name: 'module_outputs')
+              .with_value(including(:postgres_database_sg_name)))
+    end
   end
 
   describe 'when database_version provided' do

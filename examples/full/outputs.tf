@@ -10,6 +10,10 @@ output "mysql_database_port" {
   value = module.rds_postgres.postgres_database_port
 }
 
+output "postgres_database_sg_name" {
+  value = module.rds_postgres.postgres_database_sg_name
+}
+
 output "vpc_id" {
   value = module.base_network.vpc_id
 }
