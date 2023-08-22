@@ -112,3 +112,7 @@ variable "parameter_group_name" {
   description = "Name of the DB parameter group to associate or create."
   default     = null
 }
+variable "skip_final_snapshot" {
+  description = "Whether or not to create a snapshot on deletion."
+  default     = true
+}
