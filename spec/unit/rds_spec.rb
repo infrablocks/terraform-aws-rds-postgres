@@ -400,6 +400,20 @@ describe 'RDS' do
     end
   end
 
+  describe 'when skip_final_snapshot provided' do
+    before(:context) do
+      @plan = plan(role: :root) do |vars|
+        vars.skip_final_snapshot = false
+      end
+    end
+
+    it 'uses the provided skip_final_snapshot' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(:skip_final_snapshot, false))
+    end
+  end
+
   describe 'when use_multiple_availability_zones is "yes"' do
     before(:context) do
       @plan = plan(role: :root) do |vars|

@@ -71,3 +71,6 @@ variable "enable_performance_insights" {
 variable "include_self_ingress_rule" {
   default = null
 }
+variable "skip_final_snapshot" {
+  default = true
+}

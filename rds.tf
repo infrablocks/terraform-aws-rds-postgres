@@ -27,8 +27,8 @@ resource "aws_db_instance" "postgres_database" {
   username = var.database_master_user
   password = var.database_master_user_password
 
-  skip_final_snapshot = true
   snapshot_identifier = local.snapshot_identifier
+  skip_final_snapshot = var.skip_final_snapshot
 
   performance_insights_enabled = local.enable_performance_insights == "yes" ? true : false
   allow_major_version_upgrade  = local.allow_major_version_upgrade == "yes" ? true : false

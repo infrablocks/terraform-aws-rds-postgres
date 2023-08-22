@@ -36,6 +36,7 @@ module "rds_postgres" {
   backup_window           = var.backup_window
   maintenance_window      = var.maintenance_window
   parameter_group_name    = var.parameter_group_name
+  skip_final_snapshot     = var.skip_final_snapshot
 
   use_multiple_availability_zones        = var.use_multiple_availability_zones
   use_encrypted_storage                  = var.use_encrypted_storage
