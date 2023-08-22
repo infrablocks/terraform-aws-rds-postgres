@@ -18,6 +18,10 @@ ENHANCEMENTS:
   controlled via the `private_network_cidr` variable and the security group so
   set this variable to `"0.0.0.0/0"` if you want to allow full public access.
 
+## 2.3.0 (August 22nd, 2023)
+* The creation of the database final snapshot can be enabled via the `skip_final_snapshot` var.
+* The parameter group for the database can now be specified via the `parameter_group_name` var.
+
 ## 2.2.0 (April 25th, 2022)
 * Performance insights can be enabled by setting `performance_insights_enabled` to `"yes"`.
 
