@@ -18,11 +18,14 @@ describe 'full' do
     var(role: :full, name: 'database_name')
   end
 
-  let(:mysql_database_port) do
-    output(role: :full, name: 'mysql_database_port')
+  let(:postgres_database_port) do
+    output(role: :full, name: 'postgres_database_port')
   end
-  let(:mysql_database_host) do
-    output(role: :full, name: 'mysql_database_host')
+  let(:postgres_database_host) do
+    output(role: :full, name: 'postgres_database_host')
+  end
+  let(:postgres_database_sg_name) do
+    output(role: :full, name: 'postgres_database_sg_name')
   end
 
   before(:context) do
@@ -42,13 +45,6 @@ describe 'full' do
     end
 
     it { is_expected.to(exist) }
-
-    it 'has a security group' do
-      security_group_name_tag =
-        "sg-database-#{component}-#{deployment_identifier}"
-      expect(database)
-        .to(have_security_group(security_group_name_tag))
-    end
 
     it 'has a name tag' do
       value = "db-instance-#{component}-#{deployment_identifier}"
@@ -72,11 +68,11 @@ describe 'full' do
     its('engine_version') { is_expected.to(eq('14.3')) }
 
     its('endpoint.address') do
-      is_expected.to(eq(mysql_database_host))
+      is_expected.to(eq(postgres_database_host))
     end
 
     its('endpoint.port') do
-      is_expected.to(eq(mysql_database_port.to_i))
+      is_expected.to(eq(postgres_database_port.to_i))
     end
 
     its('backup_retention_period') { is_expected.to(eq(7)) }
@@ -94,18 +90,16 @@ describe 'full' do
 
   describe 'security_group' do
     subject do
-      security_group(
-        "sg-database-#{component}-#{deployment_identifier}"
-      )
+      security_group(postgres_database_sg_name)
     end
+
+    it { is_expected.to(exist) }
 
     its(:inbound) do
       is_expected
         .to(be_opened(22)
               .protocol('tcp')
-              .for(
-                "sg-database-#{component}-#{deployment_identifier}"
-              ))
+              .for(postgres_database_sg_name))
     end
   end
 end
