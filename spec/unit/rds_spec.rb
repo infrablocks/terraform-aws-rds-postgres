@@ -412,6 +412,14 @@ describe 'RDS' do
         .to(include_resource_creation(type: 'aws_db_instance')
               .with_attribute_value(:skip_final_snapshot, false))
     end
+
+    it 'includes identifiers in the final snapshot identifier' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(:final_snapshot_identifier,
+                                    including(component)
+                                      .and(including(deployment_identifier))))
+    end
   end
 
   describe 'when use_multiple_availability_zones is "yes"' do
