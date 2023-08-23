@@ -20,6 +20,7 @@ ENHANCEMENTS:
 
 ## 2.3.0 (August 22nd, 2023)
 * The creation of the database final snapshot can be enabled via the `skip_final_snapshot` var.
+  The final snapshot will have the same name of the RDS database instance.
 * The parameter group for the database can now be specified via the `parameter_group_name` var.
 
 ## 2.2.0 (April 25th, 2022)

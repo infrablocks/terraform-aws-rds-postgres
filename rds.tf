@@ -29,6 +29,7 @@ resource "aws_db_instance" "postgres_database" {
 
   snapshot_identifier = local.snapshot_identifier
   skip_final_snapshot = var.skip_final_snapshot
+  final_snapshot_identifier = "db-instance-${var.component}-${var.deployment_identifier}"
 
   performance_insights_enabled = local.enable_performance_insights == "yes" ? true : false
   allow_major_version_upgrade  = local.allow_major_version_upgrade == "yes" ? true : false
