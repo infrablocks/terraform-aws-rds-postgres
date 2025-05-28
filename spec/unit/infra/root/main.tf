@@ -12,8 +12,8 @@ module "rds_postgres" {
   component             = var.component
   deployment_identifier = var.deployment_identifier
 
-  vpc_id             = data.terraform_remote_state.prerequisites.outputs.vpc_id
-  private_subnet_ids = data.terraform_remote_state.prerequisites.outputs.private_subnet_ids
+  vpc_id     = data.terraform_remote_state.prerequisites.outputs.vpc_id
+  subnet_ids = data.terraform_remote_state.prerequisites.outputs.private_subnet_ids
 
   private_network_cidr = var.private_network_cidr
 

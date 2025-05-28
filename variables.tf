@@ -2,9 +2,8 @@ variable "vpc_id" {
   description = "The ID of the VPC into which to deploy the database."
 }
 
-// TODO: rename this to subnet IDs since they could be public.
-variable "private_subnet_ids" {
-  description = "The IDs of the private subnets to deploy the database into."
+variable "subnet_ids" {
+  description = "The IDs of the subnets to deploy the database into."
   type        = list(string)
 }
 // TODO: switch security group rules to be less specific about whether public or private.

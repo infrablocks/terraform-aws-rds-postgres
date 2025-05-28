@@ -4,7 +4,10 @@ BACKWARDS INCOMPATIBILITIES / NOTES:
 
 * The `auto_minor_version_upgrade` variable has been renamed to 
   `enable_automatic_minor_version_upgrade`.
-* The default value of `max_allocated_storage` has changed from `0` to `null`.  
+* The default value of `max_allocated_storage` has changed from `0` to `null`.
+* The `private_subnet_ids` variable has been renamed to `subnet_ids` since it
+  is now possible to deploy into public subnets and expose the database 
+  publicly.
 
 ENHANCEMENTS:
 
