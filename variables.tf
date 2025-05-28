@@ -58,11 +58,20 @@ variable "database_port" {
 variable "database_name" {
   description = "The name of the database schema to create. If omitted, no database schema is created initially."
 }
-variable "database_master_user" {
-  description = "The password for the master database user."
+variable "database_master_user_username" {
+  description = "The username for the master database user."
 }
 variable "database_master_user_password" {
-  description = "The username for the master database user."
+  description = "The password for the master database user. Either this variable or `database_master_user_password_wo` must be set."
+  default = null
+}
+variable "database_master_user_password_wo" {
+  description = "The password for the master database user, as a write-only variable. Either this variable or `database_master_user_password` must be set."
+  default = null
+}
+variable "database_master_user_password_wo_version" {
+  description = "The version of the write-only variable for the master database user password. This must be set if `database_master_user_password_wo` is set."
+  default = null
 }
 
 variable "use_multiple_availability_zones" {

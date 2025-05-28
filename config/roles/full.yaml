@@ -12,5 +12,5 @@ vars:
   private_zone_id: "%{hiera('private_zone_id')}"
 
   database_name: "%{hiera('database_name')}"
-  database_master_user: "%{hiera('database_master_user')}"
+  database_master_user_username: "%{hiera('database_master_user_username')}"
   database_master_user_password: "%{hiera('database_master_user_password')}"

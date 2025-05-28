@@ -26,9 +26,11 @@ module "rds_postgres" {
   allocated_storage     = var.allocated_storage
   max_allocated_storage = var.max_allocated_storage
 
-  database_name                 = var.database_name
-  database_master_user          = var.database_master_user
-  database_master_user_password = var.database_master_user_password
+  database_name                            = var.database_name
+  database_master_user_username            = var.database_master_user_username
+  database_master_user_password            = var.database_master_user_password
+  database_master_user_password_wo         = var.database_master_user_password_wo
+  database_master_user_password_wo_version = var.database_master_user_password_wo_version
 
   snapshot_identifier = var.snapshot_identifier
 

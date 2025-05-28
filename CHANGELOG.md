@@ -15,6 +15,9 @@ BACKWARDS INCOMPATIBILITIES / NOTES:
   `true|false`.
 * The default instance type has been changed from `db.t2.micro` to
   `db.t4g.micro`.
+* The `database_master_user` variable has been renamed to
+  `database_master_user_username` for parity with the equivalent password 
+  variable.
 
 ENHANCEMENTS:
 
@@ -27,6 +30,9 @@ ENHANCEMENTS:
   instance to be exposed to the public Internet if required. Access is
   controlled via the `allowed_cidrs` variable and the security group so
   set this variable to `["0.0.0.0/0"]` if you want to allow full public access.
+* Two new variables, `database_master_user_password_wo` and 
+  `database_master_user_password_wo_version`, have been added to allow the use
+  of ephemeral values for the master user password.
 * This module now uses the nullable feature to simplify variable defaults.
 
 ## 2.3.0 (August 22nd, 2023)

@@ -38,7 +38,7 @@ task default: %i[
 
 RakeTerraform.define_installation_tasks(
   path: File.join(Dir.pwd, 'vendor', 'terraform'),
-  version: '1.3.1'
+  version: '1.11.4'
 )
 
 RakeGitCrypt.define_standard_tasks(

@@ -11,5 +11,5 @@ variable "availability_zones" {
 variable "private_zone_id" {}
 
 variable "database_name" {}
-variable "database_master_user" {}
+variable "database_master_user_username" {}
 variable "database_master_user_password" {}

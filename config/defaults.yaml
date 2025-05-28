@@ -13,7 +13,7 @@ allowed_cidrs:
   - '10.0.0.0/8'
 
 database_name: 'testservicedb'
-database_master_user: 'testservice'
+database_master_user_username: 'testservice'
 database_master_user_password: 'testpassword'
 
 private_zone_id: 'Z0211739BXR21FNN139O'

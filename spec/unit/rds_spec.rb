@@ -13,8 +13,8 @@ describe 'RDS' do
   let(:database_name) do
     var(role: :root, name: 'database_name')
   end
-  let(:database_master_user) do
-    var(role: :root, name: 'database_master_user')
+  let(:database_master_user_username) do
+    var(role: :root, name: 'database_master_user_username')
   end
   let(:database_master_user_password) do
     var(role: :root, name: 'database_master_user_password')
@@ -110,7 +110,7 @@ describe 'RDS' do
     it 'uses the provided database username' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_db_instance')
-              .with_attribute_value(:username, database_master_user))
+              .with_attribute_value(:username, database_master_user_username))
     end
 
     it 'uses the provided database password' do

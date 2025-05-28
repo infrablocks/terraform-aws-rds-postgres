@@ -23,12 +23,14 @@ resource "aws_db_instance" "postgres_database" {
   allocated_storage     = var.allocated_storage
   max_allocated_storage = var.max_allocated_storage
 
-  db_name  = var.database_name
-  username = var.database_master_user
-  password = var.database_master_user_password
+  db_name             = var.database_name
+  username            = var.database_master_user_username
+  password            = var.database_master_user_password
+  password_wo         = var.database_master_user_password_wo
+  password_wo_version = var.database_master_user_password_wo_version
 
-  snapshot_identifier = var.snapshot_identifier
-  skip_final_snapshot = var.skip_final_snapshot
+  snapshot_identifier       = var.snapshot_identifier
+  skip_final_snapshot       = var.skip_final_snapshot
   final_snapshot_identifier = "db-instance-${var.component}-${var.deployment_identifier}"
 
   performance_insights_enabled = var.enable_performance_insights

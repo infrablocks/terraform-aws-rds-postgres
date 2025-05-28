@@ -13,7 +13,7 @@ module "rds_postgres" {
   database_version        = "17.5"
 
   database_name                 = var.database_name
-  database_master_user          = var.database_master_user
+  database_master_user_username = var.database_master_user_username
   database_master_user_password = var.database_master_user_password
 
   enable_performance_insights = true

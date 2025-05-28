@@ -34,8 +34,17 @@ variable "max_allocated_storage" {
 }
 
 variable "database_name" {}
-variable "database_master_user" {}
-variable "database_master_user_password" {}
+variable "database_master_user_username" {}
+variable "database_master_user_password" {
+  default = null
+}
+variable "database_master_user_password_wo" {
+  default = null
+}
+variable "database_master_user_password_wo_version" {
+  type    = number
+  default = null
+}
 
 variable "snapshot_identifier" {
   default = null
