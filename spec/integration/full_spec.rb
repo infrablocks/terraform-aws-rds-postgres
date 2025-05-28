@@ -65,7 +65,7 @@ describe 'full' do
     it { is_expected.to(belong_to_vpc(vpc_id)) }
 
     its('db_name') { is_expected.to(eq(database_name)) }
-    its('engine_version') { is_expected.to(eq('14.3')) }
+    its('engine_version') { is_expected.to(eq('17.5')) }
 
     its('endpoint.address') do
       is_expected.to(eq(postgres_database_host))

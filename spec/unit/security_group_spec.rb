@@ -146,10 +146,10 @@ describe 'security group' do
     end
   end
 
-  describe 'when include_self_ingress_rule is \"yes\"' do
+  describe 'when include_self_ingress_rule is true' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.include_self_ingress_rule = 'yes'
+        vars.include_self_ingress_rule = true
       end
     end
 
@@ -170,10 +170,10 @@ describe 'security group' do
     end
   end
 
-  describe 'when include_self_ingress_rule is \"no\"' do
+  describe 'when include_self_ingress_rule is false' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.include_self_ingress_rule = 'no'
+        vars.include_self_ingress_rule = false
       end
     end
 

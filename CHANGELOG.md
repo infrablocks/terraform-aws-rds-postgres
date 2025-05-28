@@ -11,6 +11,8 @@ BACKWARDS INCOMPATIBILITIES / NOTES:
 * The `private_network_cidr` variable has been renamed to `allowed_cidrs` to
   better reflect its purpose, and now accepts a list of CIDRs rather than a
   single CIDR.
+* All variables previously using `"yes|no"` have been replaced with
+  `true|false`.
 
 ENHANCEMENTS:
 
@@ -23,6 +25,7 @@ ENHANCEMENTS:
   instance to be exposed to the public Internet if required. Access is
   controlled via the `allowed_cidrs` variable and the security group so
   set this variable to `["0.0.0.0/0"]` if you want to allow full public access.
+* This module now uses the nullable feature to simplify variable defaults.
 
 ## 2.3.0 (August 22nd, 2023)
 * The creation of the database final snapshot can be enabled via the `skip_final_snapshot` var.

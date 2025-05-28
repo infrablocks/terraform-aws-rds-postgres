@@ -17,7 +17,7 @@ resource "aws_security_group" "postgres_database_security_group" {
   }
 
   dynamic "ingress" {
-    for_each = var.include_self_ingress_rule == "yes" ? [1] : []
+    for_each = var.include_self_ingress_rule ? [1] : []
     content {
       self      = true
       from_port = 0

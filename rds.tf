@@ -6,8 +6,8 @@ resource "aws_db_instance" "postgres_database" {
 
   instance_class = var.database_instance_class
 
-  publicly_accessible = var.allow_public_access == "yes" ? true : false
-  multi_az            = var.use_multiple_availability_zones == "yes" ? true : false
+  publicly_accessible = var.allow_public_access
+  multi_az            = var.use_multiple_availability_zones
 
   port = var.database_port
 
@@ -19,7 +19,7 @@ resource "aws_db_instance" "postgres_database" {
 
   storage_type          = var.storage_type
   iops                  = var.storage_iops
-  storage_encrypted     = var.use_encrypted_storage == "yes" ? true : false
+  storage_encrypted     = var.use_encrypted_storage
   allocated_storage     = var.allocated_storage
   max_allocated_storage = var.max_allocated_storage
 
@@ -31,9 +31,9 @@ resource "aws_db_instance" "postgres_database" {
   skip_final_snapshot = var.skip_final_snapshot
   final_snapshot_identifier = "db-instance-${var.component}-${var.deployment_identifier}"
 
-  performance_insights_enabled = var.enable_performance_insights == "yes" ? true : false
-  allow_major_version_upgrade  = var.allow_major_version_upgrade == "yes" ? true : false
-  auto_minor_version_upgrade   = var.enable_automatic_minor_version_upgrade == "yes" ? true : false
+  performance_insights_enabled = var.enable_performance_insights
+  allow_major_version_upgrade  = var.allow_major_version_upgrade
+  auto_minor_version_upgrade   = var.enable_automatic_minor_version_upgrade
 
   backup_retention_period = var.backup_retention_period
   backup_window           = var.backup_window

@@ -422,10 +422,10 @@ describe 'RDS' do
     end
   end
 
-  describe 'when use_multiple_availability_zones is "yes"' do
+  describe 'when use_multiple_availability_zones is true' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.use_multiple_availability_zones = 'yes'
+        vars.use_multiple_availability_zones = true
       end
     end
 
@@ -436,10 +436,10 @@ describe 'RDS' do
     end
   end
 
-  describe 'when use_multiple_availability_zones is "no"' do
+  describe 'when use_multiple_availability_zones is false' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.use_multiple_availability_zones = 'no'
+        vars.use_multiple_availability_zones = false
       end
     end
 
@@ -450,10 +450,10 @@ describe 'RDS' do
     end
   end
 
-  describe 'when use_encrypted_storage is "yes"' do
+  describe 'when use_encrypted_storage is true' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.use_encrypted_storage = 'yes'
+        vars.use_encrypted_storage = true
       end
     end
 
@@ -464,10 +464,10 @@ describe 'RDS' do
     end
   end
 
-  describe 'when use_encrypted_storage is "no"' do
+  describe 'when use_encrypted_storage is false' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.use_encrypted_storage = 'no'
+        vars.use_encrypted_storage = false
       end
     end
 
@@ -478,10 +478,10 @@ describe 'RDS' do
     end
   end
 
-  describe 'when allow_public_access is "yes"' do
+  describe 'when allow_public_access is true' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.allow_public_access = 'yes'
+        vars.allow_public_access = true
       end
     end
 
@@ -492,10 +492,10 @@ describe 'RDS' do
     end
   end
 
-  describe 'when allow_public_access is "no"' do
+  describe 'when allow_public_access is false' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.allow_public_access = 'no'
+        vars.allow_public_access = false
       end
     end
 
@@ -506,10 +506,10 @@ describe 'RDS' do
     end
   end
 
-  describe 'when enable_automatic_minor_version_upgrade is "yes"' do
+  describe 'when enable_automatic_minor_version_upgrade is true' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.enable_automatic_minor_version_upgrade = 'yes'
+        vars.enable_automatic_minor_version_upgrade = true
       end
     end
 
@@ -520,10 +520,10 @@ describe 'RDS' do
     end
   end
 
-  describe 'when enable_automatic_minor_version_upgrade is "no"' do
+  describe 'when enable_automatic_minor_version_upgrade is false' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.enable_automatic_minor_version_upgrade = 'no'
+        vars.enable_automatic_minor_version_upgrade = false
       end
     end
 
@@ -534,10 +534,10 @@ describe 'RDS' do
     end
   end
 
-  describe 'when allow_major_version_upgrade is "yes"' do
+  describe 'when allow_major_version_upgrade is true' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.allow_major_version_upgrade = 'yes'
+        vars.allow_major_version_upgrade = true
       end
     end
 
@@ -548,10 +548,10 @@ describe 'RDS' do
     end
   end
 
-  describe 'when allow_major_version_upgrade is "no"' do
+  describe 'when allow_major_version_upgrade is false' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.allow_major_version_upgrade = 'no'
+        vars.allow_major_version_upgrade = false
       end
     end
 
@@ -562,10 +562,10 @@ describe 'RDS' do
     end
   end
 
-  describe 'when enable_performance_insights is "yes"' do
+  describe 'when enable_performance_insights is true' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.enable_performance_insights = 'yes'
+        vars.enable_performance_insights = true
       end
     end
 
@@ -576,10 +576,10 @@ describe 'RDS' do
     end
   end
 
-  describe 'when enable_performance_insights is "no"' do
+  describe 'when enable_performance_insights is false' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.enable_performance_insights = 'no'
+        vars.enable_performance_insights = false
       end
     end
 

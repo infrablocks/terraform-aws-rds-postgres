@@ -16,6 +16,6 @@ module "rds_postgres" {
   database_master_user          = var.database_master_user
   database_master_user_password = var.database_master_user_password
 
-  enable_performance_insights = "yes"
-  include_self_ingress_rule   = "yes"
+  enable_performance_insights = true
+  include_self_ingress_rule   = true
 }

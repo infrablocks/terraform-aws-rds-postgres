@@ -54,26 +54,34 @@ variable "parameter_group_name" {
   default = null
 }
 variable "use_multiple_availability_zones" {
+  type    = bool
   default = null
 }
 variable "use_encrypted_storage" {
+  type    = bool
   default = null
 }
 variable "allow_public_access" {
+  type    = bool
   default = null
 }
 variable "allow_major_version_upgrade" {
+  type    = bool
   default = null
 }
 variable "enable_automatic_minor_version_upgrade" {
+  type    = bool
   default = null
 }
 variable "enable_performance_insights" {
+  type    = bool
   default = null
 }
 variable "include_self_ingress_rule" {
+  type    = bool
   default = null
 }
 variable "skip_final_snapshot" {
-  default = true
+  type    = bool
+  default = null
 }

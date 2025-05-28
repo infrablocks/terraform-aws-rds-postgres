@@ -66,38 +66,45 @@ variable "database_master_user_password" {
 }
 
 variable "use_multiple_availability_zones" {
-  description = "Whether or not to create a multi-availability zone database (\"yes\" or \"no\")."
-  default     = "no"
+  description = "Whether or not to create a multi-availability zone database."
+  type        = bool
+  default     = false
   nullable    = false
 }
 variable "use_encrypted_storage" {
-  description = "Whether or not to use encrypted storage for the database (\"yes\" or \"no\")."
-  default     = "no"
+  description = "Whether or not to use encrypted storage for the database."
+  type        = bool
+  default     = false
   nullable    = false
 }
 variable "allow_public_access" {
-  description = "Whether or not to allow public access to the database (\"yes\" or \"no\")."
-  default     = "no"
+  description = "Whether or not to allow public access to the database."
+  type        = bool
+  default     = false
   nullable    = false
 }
 variable "allow_major_version_upgrade" {
-  description = "Whether or not major version upgrades are allowed (\"yes\" or \"no\"). Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible. Defaults to \"no\"."
-  default     = "no"
+  description = "Whether or not major version upgrades are allowed. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible. Defaults to false."
+  type        = bool
+  default     = false
   nullable    = false
 }
 variable "enable_automatic_minor_version_upgrade" {
-  description = "Whether or not minor engine upgrades will be applied automatically to the DB instance during the maintenance window (\"yes\" or \"no\"). Defaults to \"yes\"."
-  default     = "yes"
+  description = "Whether or not minor engine upgrades will be applied automatically to the DB instance during the maintenance window. Defaults to true."
+  type        = bool
+  default     = true
   nullable    = false
 }
 variable "enable_performance_insights" {
-  description = "Whether or not performance insights are enabled for the database (\"yes\" or \"no\"). Defaults to \"no\".."
-  default     = "no"
+  description = "Whether or not performance insights are enabled for the database. Defaults to false."
+  type        = bool
+  default     = false
   nullable    = false
 }
 variable "include_self_ingress_rule" {
-  description = "Whether or not to allow access from the database security group to itself (\"yes\" or \"no\")."
-  default     = "no"
+  description = "Whether or not to allow access from the database security group to itself."
+  type        = bool
+  default     = false
   nullable    = false
 }
 
@@ -129,6 +136,7 @@ variable "parameter_group_name" {
 }
 variable "skip_final_snapshot" {
   description = "Whether or not to create a snapshot on deletion."
+  type        = bool
   default     = true
   nullable    = false
 }
