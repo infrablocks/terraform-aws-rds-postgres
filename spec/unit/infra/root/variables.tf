@@ -1,6 +1,9 @@
 variable "region" {}
 
-variable "private_network_cidr" {}
+variable "allowed_cidrs" {
+  type = list(string)
+  default = null
+}
 
 variable "component" {}
 variable "deployment_identifier" {}

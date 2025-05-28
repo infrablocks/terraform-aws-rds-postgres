@@ -4,11 +4,11 @@ variable "vpc_id" {
 
 variable "subnet_ids" {
   description = "The IDs of the subnets to deploy the database into."
-  type        = list(string)
+  type = list(string)
 }
-// TODO: switch security group rules to be less specific about whether public or private.
-variable "private_network_cidr" {
-  description = "The CIDR of the private network allowed access to the database."
+variable "allowed_cidrs" {
+  description = "The CIDRs allowed access to the database."
+  type = list(string)
 }
 
 variable "component" {

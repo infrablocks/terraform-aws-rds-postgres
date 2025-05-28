@@ -15,7 +15,7 @@ module "rds_postgres" {
   vpc_id     = data.terraform_remote_state.prerequisites.outputs.vpc_id
   subnet_ids = data.terraform_remote_state.prerequisites.outputs.private_subnet_ids
 
-  private_network_cidr = var.private_network_cidr
+  allowed_cidrs = var.allowed_cidrs
 
   database_instance_class = var.database_instance_class
   database_version        = var.database_version

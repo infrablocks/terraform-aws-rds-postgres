@@ -4,7 +4,7 @@ state_file: "%{cwd}/state/root.tfstate"
 vars:
   region: "%{hiera('region')}"
 
-  private_network_cidr: "%{hiera('private_network_cidr')}"
+  allowed_cidrs: "%{hiera('allowed_cidrs')}"
 
   component: "%{hiera('component')}"
   deployment_identifier: "%{hiera('deployment_identifier')}"

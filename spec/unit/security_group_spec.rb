@@ -9,8 +9,8 @@ describe 'security group' do
   let(:deployment_identifier) do
     var(role: :root, name: 'deployment_identifier')
   end
-  let(:private_network_cidr) do
-    var(role: :root, name: 'private_network_cidr')
+  let(:allowed_cidrs) do
+    var(role: :root, name: 'allowed_cidrs')
   end
   let(:vpc_id) do
     output(role: :prerequisites, name: 'vpc_id')
@@ -63,7 +63,7 @@ describe 'security group' do
                   from_port: 5432,
                   to_port: 5432,
                   protocol: 'tcp',
-                  cidr_blocks: [private_network_cidr]
+                  cidr_blocks: allowed_cidrs
                 )
               ))
     end
@@ -140,7 +140,7 @@ describe 'security group' do
                   from_port: 5433,
                   to_port: 5433,
                   protocol: 'tcp',
-                  cidr_blocks: [private_network_cidr]
+                  cidr_blocks: allowed_cidrs
                 )
               ))
     end

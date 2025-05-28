@@ -8,6 +8,9 @@ BACKWARDS INCOMPATIBILITIES / NOTES:
 * The `private_subnet_ids` variable has been renamed to `subnet_ids` since it
   is now possible to deploy into public subnets and expose the database 
   publicly.
+* The `private_network_cidr` variable has been renamed to `allowed_cidrs` to
+  better reflect its purpose, and now accepts a list of CIDRs rather than a
+  single CIDR.
 
 ENHANCEMENTS:
 
@@ -17,9 +20,9 @@ ENHANCEMENTS:
 * A `storage_iops` variable has been added allowing the database storage IOPS
   to be configured.
 * An `allow_public_access` variable has been added allowing the database
-  instance to be exposed to the public Internet if required. Access is still
-  controlled via the `private_network_cidr` variable and the security group so
-  set this variable to `"0.0.0.0/0"` if you want to allow full public access.
+  instance to be exposed to the public Internet if required. Access is
+  controlled via the `allowed_cidrs` variable and the security group so
+  set this variable to `["0.0.0.0/0"]` if you want to allow full public access.
 
 ## 2.3.0 (August 22nd, 2023)
 * The creation of the database final snapshot can be enabled via the `skip_final_snapshot` var.
