@@ -13,6 +13,8 @@ BACKWARDS INCOMPATIBILITIES / NOTES:
   single CIDR.
 * All variables previously using `"yes|no"` have been replaced with
   `true|false`.
+* The default instance type has been changed from `db.t2.micro` to
+  `db.t4g.micro`.
 
 ENHANCEMENTS:
 

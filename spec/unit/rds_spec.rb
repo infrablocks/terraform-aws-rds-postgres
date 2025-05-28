@@ -53,10 +53,10 @@ describe 'RDS' do
               .with_attribute_value(:engine_version, a_nil_value))
     end
 
-    it 'uses an instance class of "db.t2.micro"' do
+    it 'uses an instance class of "db.t4g.micro"' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_db_instance')
-              .with_attribute_value(:instance_class, 'db.t2.micro'))
+              .with_attribute_value(:instance_class, 'db.t4g.micro'))
     end
 
     it 'is not publicly accessible' do
@@ -248,14 +248,14 @@ describe 'RDS' do
   describe 'when database_instance_class provided' do
     before(:context) do
       @plan = plan(role: :root) do |vars|
-        vars.database_instance_class = 'db.t4g.micro'
+        vars.database_instance_class = 'db.t4g.small'
       end
     end
 
     it 'uses the provided instance class' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_db_instance')
-              .with_attribute_value(:instance_class, 'db.t4g.micro'))
+              .with_attribute_value(:instance_class, 'db.t4g.small'))
     end
   end
 
