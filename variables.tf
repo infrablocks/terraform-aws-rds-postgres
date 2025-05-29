@@ -67,6 +67,7 @@ variable "database_master_user_password" {
 }
 variable "database_master_user_password_wo" {
   description = "The password for the master database user, as a write-only variable. Either this variable or `database_master_user_password` must be set."
+  ephemeral = true
   default = null
 }
 variable "database_master_user_password_wo_version" {
