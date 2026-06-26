@@ -590,36 +590,52 @@ describe 'RDS' do
     end
   end
 
-  describe 'when additional_security_group_ids is omitted' do
-    before(:context) do
-      @plan = plan(role: :root)
+  # `vpc_security_group_ids` is `(known after apply)` at plan time because
+  # `rds.tf` concats the module-owned SG's unknown id onto
+  # var.additional_security_group_ids — Terraform marks the whole list opaque,
+  # so .with_attribute_value cannot inspect its contents. Assert instead on
+  # the plan's `configuration` block, which records the symbolic expression
+  # wired into the argument (the references list is deterministic).
+  describe 'additional_security_group_ids wiring' do
+    module_sg_ref = 'aws_security_group.postgres_database_security_group.id'
+    extra_sgs_ref = 'var.additional_security_group_ids'
+
+    def db_instance_vpc_sg_ids_references(plan)
+      root = plan.to_h[:configuration][:root_module]
+      mod = root[:module_calls][:rds_postgres][:module]
+      addr = 'aws_db_instance.postgres_database'
+      resource = mod[:resources].find { |r| r[:address] == addr }
+      resource[:expressions][:vpc_security_group_ids][:references]
     end
 
-    it 'does not attach extra security groups to the RDS instance' do
-      expect(@plan)
-        .not_to(include_resource_creation(type: 'aws_db_instance')
-                  .with_attribute_value(
-                    :vpc_security_group_ids,
-                    a_collection_including('sg-deadbeef0000')
-                  ))
-    end
-  end
+    describe 'when omitted' do
+      before(:context) do
+        @plan = plan(role: :root)
+      end
 
-  describe 'when additional_security_group_ids is provided' do
-    before(:context) do
-      @plan = plan(role: :root) do |vars|
-        vars.additional_security_group_ids =
-          %w[sg-deadbeef0000 sg-deadbeef0001]
+      it 'wires both the module SG and the variable into the argument' do
+        refs = db_instance_vpc_sg_ids_references(@plan)
+        expect(refs).to(include(module_sg_ref, extra_sgs_ref))
       end
     end
 
-    it 'attaches the extra security groups alongside the module-managed SG' do
-      expect(@plan)
-        .to(include_resource_creation(type: 'aws_db_instance')
-              .with_attribute_value(
-                :vpc_security_group_ids,
-                a_collection_including('sg-deadbeef0000', 'sg-deadbeef0001')
-              ))
+    describe 'when provided' do
+      before(:context) do
+        @plan = plan(role: :root) do |vars|
+          vars.additional_security_group_ids =
+            %w[sg-deadbeef0000 sg-deadbeef0001]
+        end
+      end
+
+      it 'passes the supplied list through to the module variable' do
+        expect(@plan.variable_values[:additional_security_group_ids])
+          .to(eq(%w[sg-deadbeef0000 sg-deadbeef0001]))
+      end
+
+      it 'wires both the module SG and the variable into the argument' do
+        refs = db_instance_vpc_sg_ids_references(@plan)
+        expect(refs).to(include(module_sg_ref, extra_sgs_ref))
+      end
     end
   end
 end
