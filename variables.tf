@@ -150,3 +150,10 @@ variable "skip_final_snapshot" {
   default     = true
   nullable    = false
 }
+
+variable "additional_security_group_ids" {
+  description = "Extra security group IDs to attach to the RDS instance alongside the module-managed SG. Use this to attach SGs you own that carry side-effect ingress rules, avoiding the AWS provider footgun of mixing inline `ingress` blocks with `aws_vpc_security_group_ingress_rule` resources on the same SG."
+  type        = list(string)
+  default     = []
+  nullable    = false
+}

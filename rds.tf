@@ -13,9 +13,10 @@ resource "aws_db_instance" "postgres_database" {
 
   db_subnet_group_name = aws_db_subnet_group.postgres_database_subnet_group.name
 
-  vpc_security_group_ids = [
-    aws_security_group.postgres_database_security_group.id
-  ]
+  vpc_security_group_ids = concat(
+    [aws_security_group.postgres_database_security_group.id],
+    var.additional_security_group_ids,
+  )
 
   storage_type          = var.storage_type
   iops                  = var.storage_iops

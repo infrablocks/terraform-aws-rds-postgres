@@ -34,6 +34,12 @@ ENHANCEMENTS:
   `database_master_user_password_wo_version`, have been added to allow the use
   of ephemeral values for the master user password.
 * This module now uses the nullable feature to simplify variable defaults.
+* An `additional_security_group_ids` variable has been added, allowing callers
+  to attach extra security groups to the RDS instance alongside the module's
+  own SG. This is the recommended way to add ingress rules without mixing
+  the module's inline `ingress` block with side-effect
+  `aws_vpc_security_group_ingress_rule` resources on the same SG (which the
+  AWS provider documentation warns against).
 
 ## 2.3.0 (August 22nd, 2023)
 * The creation of the database final snapshot can be enabled via the `skip_final_snapshot` var.

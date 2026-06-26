@@ -94,3 +94,8 @@ variable "skip_final_snapshot" {
   type    = bool
   default = null
 }
+
+variable "additional_security_group_ids" {
+  type    = list(string)
+  default = null
+}
