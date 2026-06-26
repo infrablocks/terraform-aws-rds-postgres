@@ -589,4 +589,37 @@ describe 'RDS' do
               .with_attribute_value(:performance_insights_enabled, false))
     end
   end
+
+  describe 'when additional_security_group_ids is omitted' do
+    before(:context) do
+      @plan = plan(role: :root)
+    end
+
+    it 'does not attach extra security groups to the RDS instance' do
+      expect(@plan)
+        .not_to(include_resource_creation(type: 'aws_db_instance')
+                  .with_attribute_value(
+                    :vpc_security_group_ids,
+                    a_collection_including('sg-deadbeef0000')
+                  ))
+    end
+  end
+
+  describe 'when additional_security_group_ids is provided' do
+    before(:context) do
+      @plan = plan(role: :root) do |vars|
+        vars.additional_security_group_ids =
+          %w[sg-deadbeef0000 sg-deadbeef0001]
+      end
+    end
+
+    it 'attaches the extra security groups alongside the module-managed SG' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(
+                :vpc_security_group_ids,
+                a_collection_including('sg-deadbeef0000', 'sg-deadbeef0001')
+              ))
+    end
+  end
 end

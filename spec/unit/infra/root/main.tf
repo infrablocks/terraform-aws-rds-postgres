@@ -47,4 +47,6 @@ module "rds_postgres" {
   enable_automatic_minor_version_upgrade = var.enable_automatic_minor_version_upgrade
   enable_performance_insights            = var.enable_performance_insights
   include_self_ingress_rule              = var.include_self_ingress_rule
+
+  additional_security_group_ids = var.additional_security_group_ids
 }
