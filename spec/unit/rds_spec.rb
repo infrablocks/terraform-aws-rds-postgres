@@ -176,6 +176,30 @@ describe 'RDS' do
               .with_attribute_value(:performance_insights_enabled, false))
     end
 
+    it 'does not enable deletion protection' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(:deletion_protection, false))
+    end
+
+    it 'does not enable enhanced monitoring' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(:monitoring_interval, 0))
+    end
+
+    it 'does not set a monitoring role ARN' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(:monitoring_role_arn, a_nil_value))
+    end
+
+    it 'defers modifications to the next maintenance window' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(:apply_immediately, false))
+    end
+
     it 'includes component and deployment identifier tags' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_db_instance')
@@ -587,6 +611,92 @@ describe 'RDS' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_db_instance')
               .with_attribute_value(:performance_insights_enabled, false))
+    end
+  end
+
+  describe 'when deletion_protection is true' do
+    before(:context) do
+      @plan = plan(role: :root) do |vars|
+        vars.deletion_protection = true
+      end
+    end
+
+    it 'enables deletion protection' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(:deletion_protection, true))
+    end
+  end
+
+  describe 'when deletion_protection is false' do
+    before(:context) do
+      @plan = plan(role: :root) do |vars|
+        vars.deletion_protection = false
+      end
+    end
+
+    it 'does not enable deletion protection' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(:deletion_protection, false))
+    end
+  end
+
+  describe 'when monitoring_interval provided' do
+    before(:context) do
+      @plan = plan(role: :root) do |vars|
+        vars.monitoring_interval = 60
+      end
+    end
+
+    it 'uses the provided value for monitoring interval' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(:monitoring_interval, 60))
+    end
+  end
+
+  describe 'when monitoring_role_arn provided' do
+    arn = 'arn:aws:iam::123456789012:role/rds-monitoring-role'
+
+    before(:context) do
+      @plan = plan(role: :root) do |vars|
+        vars.monitoring_role_arn = arn
+      end
+    end
+
+    it 'uses the provided value for monitoring role ARN' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(:monitoring_role_arn, arn))
+    end
+  end
+
+  describe 'when apply_immediately is true' do
+    before(:context) do
+      @plan = plan(role: :root) do |vars|
+        vars.apply_immediately = true
+      end
+    end
+
+    it 'applies modifications immediately' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(:apply_immediately, true))
+    end
+  end
+
+  describe 'when apply_immediately is false' do
+    before(:context) do
+      @plan = plan(role: :root) do |vars|
+        vars.apply_immediately = false
+      end
+    end
+
+    it 'defers modifications to the next maintenance window' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(:apply_immediately, false))
     end
   end
 

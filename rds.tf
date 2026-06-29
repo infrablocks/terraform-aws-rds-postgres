@@ -43,6 +43,11 @@ resource "aws_db_instance" "postgres_database" {
   maintenance_window      = var.maintenance_window
   parameter_group_name    = var.parameter_group_name
 
+  deletion_protection = var.deletion_protection
+  monitoring_interval = var.monitoring_interval
+  monitoring_role_arn = var.monitoring_role_arn
+  apply_immediately   = var.apply_immediately
+
   tags = {
     Name                 = "db-instance-${var.component}-${var.deployment_identifier}"
     Component            = var.component
