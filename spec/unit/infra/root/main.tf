@@ -49,4 +49,9 @@ module "rds_postgres" {
   include_self_ingress_rule              = var.include_self_ingress_rule
 
   additional_security_group_ids = var.additional_security_group_ids
+
+  deletion_protection = var.deletion_protection
+  monitoring_interval = var.monitoring_interval
+  monitoring_role_arn = var.monitoring_role_arn
+  apply_immediately   = var.apply_immediately
 }

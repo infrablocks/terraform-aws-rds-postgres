@@ -157,3 +157,30 @@ variable "additional_security_group_ids" {
   default     = []
   nullable    = false
 }
+
+variable "deletion_protection" {
+  description = "Whether the DB instance has deletion protection enabled. When enabled, the database cannot be deleted. Defaults to false."
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
+variable "monitoring_interval" {
+  description = "The interval, in seconds, between points when Enhanced Monitoring metrics are collected. 0 disables Enhanced Monitoring. Valid values: 0, 1, 5, 10, 15, 30, 60. Defaults to 0."
+  type        = number
+  default     = 0
+  nullable    = false
+}
+
+variable "monitoring_role_arn" {
+  description = "The ARN of the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs. Required when monitoring_interval > 0. The module does not create this role; supply one you manage."
+  type        = string
+  default     = null
+}
+
+variable "apply_immediately" {
+  description = "Whether to apply database modifications immediately or wait for the next maintenance window. Defaults to false (deferred to maintenance window)."
+  type        = bool
+  default     = false
+  nullable    = false
+}

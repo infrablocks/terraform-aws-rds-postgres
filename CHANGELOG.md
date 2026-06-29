@@ -40,6 +40,16 @@ ENHANCEMENTS:
   the module's inline `ingress` block with side-effect
   `aws_vpc_security_group_ingress_rule` resources on the same SG (which the
   AWS provider documentation warns against).
+* A `deletion_protection` variable has been added, allowing the DB instance to
+  be protected against accidental deletion. Defaults to `false` to preserve
+  existing behaviour.
+* `monitoring_interval` and `monitoring_role_arn` variables have been added,
+  allowing Enhanced Monitoring to be configured on the DB instance. The
+  monitoring IAM role is not created by the module; supply an ARN you manage.
+  Defaults preserve existing behaviour (Enhanced Monitoring disabled).
+* An `apply_immediately` variable has been added, controlling whether
+  modifications are applied immediately or deferred to the next maintenance
+  window. Defaults to `false` to preserve existing behaviour.
 
 ## 2.3.0 (August 22nd, 2023)
 * The creation of the database final snapshot can be enabled via the `skip_final_snapshot` var.

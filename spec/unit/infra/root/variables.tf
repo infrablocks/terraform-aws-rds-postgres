@@ -99,3 +99,20 @@ variable "additional_security_group_ids" {
   type    = list(string)
   default = null
 }
+
+variable "deletion_protection" {
+  type    = bool
+  default = null
+}
+variable "monitoring_interval" {
+  type    = number
+  default = null
+}
+variable "monitoring_role_arn" {
+  type    = string
+  default = null
+}
+variable "apply_immediately" {
+  type    = bool
+  default = null
+}
