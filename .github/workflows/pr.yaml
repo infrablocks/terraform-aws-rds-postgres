@@ -24,7 +24,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     # Shared with main.yaml's test job — one repo-wide AWS apply at a time
     concurrency:
       group: aws-integration
