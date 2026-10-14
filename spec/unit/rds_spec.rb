@@ -71,10 +71,10 @@ describe 'RDS' do
               .with_attribute_value(:multi_az, false))
     end
 
-    it 'uses "standard" storage type' do
+    it 'uses "gp3" storage type' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_db_instance')
-              .with_attribute_value(:storage_type, 'standard'))
+              .with_attribute_value(:storage_type, 'gp3'))
     end
 
     it 'does not set IOPS' do
@@ -89,10 +89,10 @@ describe 'RDS' do
               .with_attribute_value(:storage_encrypted, false))
     end
 
-    it 'allocates 10GB of storage' do
+    it 'allocates 20GB of storage' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_db_instance')
-              .with_attribute_value(:allocated_storage, 10))
+              .with_attribute_value(:allocated_storage, 20))
     end
 
     it 'does not set max storage allocation' do

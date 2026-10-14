@@ -24,8 +24,8 @@ variable "database_instance_class" {
   nullable    = false
 }
 variable "storage_type" {
-  description = "The storage type to use for the database instance. One of \"standard\" (magnetic), \"gp2\" (general purpose SSD), \"gp3\" (general purpose SSD that needs iops independently), \"io1\" or \"io2\" (provisioned IOPS SSD). The default is \"standard\"."
-  default     = "standard"
+  description = "The storage type to use for the database instance. One of \"standard\" (magnetic), \"gp2\" (general purpose SSD), \"gp3\" (general purpose SSD that needs iops independently), \"io1\" or \"io2\" (provisioned IOPS SSD). The default is \"gp3\"."
+  default     = "gp3"
   nullable    = false
 }
 variable "storage_iops" {
@@ -34,9 +34,9 @@ variable "storage_iops" {
   default     = null
 }
 variable "allocated_storage" {
-  description = "The allocated storage in GBs."
+  description = "The allocated storage in GBs. Must be at least 20 for SSD storage types (gp2, gp3, io1, io2)."
   type        = number
-  default     = 10
+  default     = 20
   nullable    = false
 }
 variable "max_allocated_storage" {
