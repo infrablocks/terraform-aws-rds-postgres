@@ -50,6 +50,10 @@ ENHANCEMENTS:
 * An `apply_immediately` variable has been added, controlling whether
   modifications are applied immediately or deferred to the next maintenance
   window. Defaults to `false` to preserve existing behaviour.
+* An `enable_iam_database_authentication` variable has been added, allowing
+  IAM database authentication to be enabled on the DB instance so database
+  users granted `rds_iam` can sign in with IAM tokens. Defaults to `false` to
+  preserve existing behaviour.
 
 ## 2.3.0 (August 22nd, 2023)
 * The creation of the database final snapshot can be enabled via the `skip_final_snapshot` var.

@@ -182,6 +182,14 @@ describe 'RDS' do
               .with_attribute_value(:deletion_protection, false))
     end
 
+    it 'does not enable IAM database authentication' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(
+                :iam_database_authentication_enabled, false
+              ))
+    end
+
     it 'does not enable enhanced monitoring' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_db_instance')
@@ -611,6 +619,38 @@ describe 'RDS' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_db_instance')
               .with_attribute_value(:performance_insights_enabled, false))
+    end
+  end
+
+  describe 'when enable_iam_database_authentication is true' do
+    before(:context) do
+      @plan = plan(role: :root) do |vars|
+        vars.enable_iam_database_authentication = true
+      end
+    end
+
+    it 'enables IAM database authentication' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(
+                :iam_database_authentication_enabled, true
+              ))
+    end
+  end
+
+  describe 'when enable_iam_database_authentication is false' do
+    before(:context) do
+      @plan = plan(role: :root) do |vars|
+        vars.enable_iam_database_authentication = false
+      end
+    end
+
+    it 'does not enable IAM database authentication' do
+      expect(@plan)
+        .to(include_resource_creation(type: 'aws_db_instance')
+              .with_attribute_value(
+                :iam_database_authentication_enabled, false
+              ))
     end
   end
 
