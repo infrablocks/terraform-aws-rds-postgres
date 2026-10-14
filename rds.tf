@@ -34,9 +34,10 @@ resource "aws_db_instance" "postgres_database" {
   skip_final_snapshot       = var.skip_final_snapshot
   final_snapshot_identifier = "db-instance-${var.component}-${var.deployment_identifier}"
 
-  performance_insights_enabled = var.enable_performance_insights
-  allow_major_version_upgrade  = var.allow_major_version_upgrade
-  auto_minor_version_upgrade   = var.enable_automatic_minor_version_upgrade
+  performance_insights_enabled        = var.enable_performance_insights
+  iam_database_authentication_enabled = var.enable_iam_database_authentication
+  allow_major_version_upgrade         = var.allow_major_version_upgrade
+  auto_minor_version_upgrade          = var.enable_automatic_minor_version_upgrade
 
   backup_retention_period = var.backup_retention_period
   backup_window           = var.backup_window

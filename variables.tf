@@ -111,6 +111,12 @@ variable "enable_performance_insights" {
   default     = false
   nullable    = false
 }
+variable "enable_iam_database_authentication" {
+  description = "Whether or not IAM database authentication is enabled for the database. Defaults to false."
+  type        = bool
+  default     = false
+  nullable    = false
+}
 variable "include_self_ingress_rule" {
   description = "Whether or not to allow access from the database security group to itself."
   type        = bool

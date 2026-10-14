@@ -86,6 +86,10 @@ variable "enable_performance_insights" {
   type    = bool
   default = null
 }
+variable "enable_iam_database_authentication" {
+  type    = bool
+  default = null
+}
 variable "include_self_ingress_rule" {
   type    = bool
   default = null
