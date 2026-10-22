@@ -1697,7 +1697,7 @@ GEM
       ffi (~> 1)
     rchardet (1.10.2)
     regexp_parser (2.9.2)
-    rexml (3.3.2)
+    rexml (3.3.6)
       strscan
     rspec (3.13.2)
       rspec-core (~> 3.13.0)
